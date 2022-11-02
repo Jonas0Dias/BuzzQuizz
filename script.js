@@ -1,6 +1,6 @@
 let perguntas;
-
-
+let Resposta;
+let Imagem;
 
 
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
@@ -19,7 +19,7 @@ function InserirQuizzes(resposta){
 
 
 function Esconder(){
-    BotaoCriar = document.querySelector(".ListaQuizzes")
+    
     BotaoCriar.classList.add('escondido')
 }
 
@@ -33,7 +33,6 @@ function EscolherQuizz(elemento){
 function MostrarQuizz(elemento){
     // console.log(elemento.data)
     perguntas = elemento.data.questions
-    console.log(perguntas)
     CapaTitulo = document.querySelector('.PaginaDeUmQuizz')
     CapaTitulo.innerHTML = `<img class='capa' src="${elemento.data.image}" alt=""></img><h3>${elemento.data.title}</h1>`
     alert('funfando')
@@ -45,8 +44,27 @@ function MostrarQuizz(elemento){
         Resposta = document.querySelectorAll('.imagens')
         for(let j=0;j<perguntas[i].answers.length;j++){
 
-            Resposta[i].innerHTML+= `<div class='imagem'><img src='${perguntas[i].answers[j].image}'></img><p>${perguntas[i].answers[j].text}</p></div>`
+            Resposta[i].innerHTML+= `<div class='imagem'><img onclick='VerificarResposta(this)' alt='${perguntas[i].answers[j].isCorrectAnswer}' src='${perguntas[i].answers[j].image}'></img><p>${perguntas[i].answers[j].text}</p></div>`
         }
     }
     // console.log(Resposta[0].innerHTML)
+
+    
+}
+
+function VerificarResposta(elemento){
+    console.log(elemento)
+    Imagem = elemento.parentNode.parentNode.children
+    console.log(Imagem[0])
+    for (i=0;i<Imagem.length;i++)
+        if (elemento.alt==='true'){
+
+            Imagem[i].style.opacity='0.3'
+            Imagem[i].removeAttribute('onclick')
+            elemento.parentNode.style.opacity='1'
+            elemento.parentNode.children[1].style.color='green'
+
+        }
+
+    
 }

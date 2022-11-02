@@ -11,6 +11,7 @@
     justify-content: space-around;
     margin: auto;
     /* background-color: aqua; */
+    /* background-color: #E5E5E5; */
 }
 
 
@@ -111,7 +112,8 @@ section {
 
 .quiz p {
     position: absolute;
-    top: 50;
+    bottom: 30px;
+    left: 18px;
     z-index: 2;
     font-family: 'Roboto';
     font-style: normal;
@@ -136,18 +138,20 @@ section {
     width: 100%;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(image.png);
     margin-bottom: 70px;
+    position: relative;
 }
 
 .PaginaDeUmQuizz {
-    position: relative;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #E5E5E5;
 }
 
 .PaginaDeUmQuizz h3 {
     position: absolute;
-    top: 0;
+    top: 115px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -156,8 +160,8 @@ section {
     display: flex;
     align-items: center;
     text-align: center;
+    color: #FFFFFF;
 
-    /* color: #FFFFFF; */
 }
 
 
@@ -167,8 +171,9 @@ section {
     align-items: center;
     width: 50%;
     /* height: 138px; */
-    background-color: aqua;
+    background-color:#FFFFFF;
     margin-bottom: 40px;
+    padding: 35px;
 }
 
 
@@ -186,19 +191,22 @@ section {
     text-align: center;
     color: #FFFFFF;
     height: 138px;
+    
 
 }
 
 .imagens {
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 20px;
     flex-wrap: wrap;
 }
 
 .imagem{
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    width: 40%;
+    margin-bottom: 18px;
 }
 .imagem img {
     width: 100%;
