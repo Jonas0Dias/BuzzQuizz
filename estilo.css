@@ -55,7 +55,7 @@ article h1 {
 
 }
 
-.criarquizz {
+.Botaocriarquizz {
     width: 136px;
     height: 40px;
     font-family: 'Roboto';
@@ -125,6 +125,10 @@ h1 {
 }
 
 
+
+.escondido{
+    display: none;
+}
 
 
 

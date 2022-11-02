@@ -9,3 +9,9 @@ function InserirQuizzes(resposta){
     }
     console.log(resposta.data)
 }
+
+
+function Esconder(){
+    BotaoCriar = document.querySelector(".ListaQuizzes")
+    BotaoCriar.classList.add('escondido')
+}
