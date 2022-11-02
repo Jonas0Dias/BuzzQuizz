@@ -9,7 +9,7 @@ ObterQuizzes.then(InserirQuizzes)
 BotaoCriar = document.querySelector(".ListaQuizzes")
 
 function InserirQuizzes(resposta){
-    // console.log(resposta.data)
+    console.log(resposta.data)
     for(i=0;i<resposta.data.length;i++){
     TodosOsQuizzes.innerHTML = TodosOsQuizzes.innerHTML + `<div onclick = 'EscolherQuizz(this)'class='quiz' id=${resposta.data[i].id}><img src=${resposta.data[i].image}></img><p>${resposta.data[i].title}</p></div>`
     // TodosOsQuizzes.innerHTML='<h1>Todos os Quizzes</h1>'
@@ -45,7 +45,7 @@ function MostrarQuizz(elemento){
         Resposta = document.querySelectorAll('.imagens')
         for(let j=0;j<perguntas[i].answers.length;j++){
 
-            Resposta[i].innerHTML+= `<img src='${perguntas[i].answers[j].image}'></img>`
+            Resposta[i].innerHTML+= `<div class='imagem'><img src='${perguntas[i].answers[j].image}'></img><p>${perguntas[i].answers[j].text}</p></div>`
         }
     }
     // console.log(Resposta[0].innerHTML)
