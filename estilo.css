@@ -4,7 +4,7 @@
 
 
 
-main{
+main {
     width: 73%;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@ header {
     background: #EC362D;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: #FFFFFF;
-   text-align: center;
+    text-align: center;
 }
 
 article {
@@ -51,6 +51,8 @@ article h1 {
     align-items: center;
     text-align: center;
     color: #B9B9B9;
+    margin-top: 0px;
+
 }
 
 .criarquizz {
@@ -69,16 +71,57 @@ article h1 {
     color: #EC362D;
 }
 
-section h1 {
+
+section {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+
+h1 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
-    text-align:left;
+    text-align: left;
     color: #000000;
     margin-top: 77px;
     margin-bottom: 12px;
+}
+
+.quiz img {
+    width: 340px;
+    height: 181px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(image.png);
+    border-radius: 5px;
+    margin-bottom: 12px;
+    margin-right: 15px;
+    z-index: 1;
+
+}
+
+
+.quiz {
+    position: relative;
+
+}
+
+.quiz p {
+    position: absolute;
+    top: 50;
+    z-index: 2;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
 }
 
 
@@ -101,21 +144,22 @@ section h1 {
 
 
 
-
-
-
-
-
-
-
-@media (max-width:375px){
-    section h1{
+@media (max-width:375px) {
+    section h1 {
         margin-top: 35px;
     }
 
-    article{
+    article {
         margin-top: 31px;
         /* margin-left: 17px; */
         /* margin-right: 17px; */
+    }
+
+    .quiz img {
+        width: 100%;
+    }
+
+    section {
+        justify-content: center;
     }
 }
