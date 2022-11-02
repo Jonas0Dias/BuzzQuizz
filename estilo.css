@@ -2,8 +2,6 @@
 
 
 
-
-
 main {
     width: 73%;
     display: flex;
@@ -123,13 +121,51 @@ h1 {
 
     color: #FFFFFF;
 }
+/* INICIO TELA DE CRIAÇÃO DO QUIZZ */
 
-
+.CriarQuizz{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.CriarTela1{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 27px;
+}
+input{
+    width: 341px;
+    height: 36px;
+    outline: none;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    margin-top: 9px;
+    
+}
+input::placeholder{
+    font-style: italic;
+    font-family: 'Roboto';
+    color:#D1D1D1;
+    padding-left: 8px;    
+}
+.botaoCriarPerguntas{
+    width: 325px;
+    height: 54px;
+    background-color:#EC362D ;
+    margin-top: 85px;
+    color: #ffffff;
+    border-radius: 15px;
+    border: none;
+}
 
 .escondido{
     display: none;
 }
 
+/* FINAL DA TELA DE CRIAÇÃO DE QUIZZ */
 
 
 
