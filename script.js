@@ -44,7 +44,7 @@ function MostrarQuizz(elemento){
         Resposta = document.querySelectorAll('.imagens')
         for(let j=0;j<perguntas[i].answers.length;j++){
 
-            Resposta[i].innerHTML+= `<div class='imagem'><img onclick='VerificarResposta(this)' alt='${perguntas[i].answers[j].isCorrectAnswer}' src='${perguntas[i].answers[j].image}'></img><p>${perguntas[i].answers[j].text}</p></div>`
+            Resposta[i].innerHTML+= `<div class='imagem'><img class='resp' onclick='VerificarResposta(this)' id='${perguntas[i].answers[j].isCorrectAnswer}' src='${perguntas[i].answers[j].image}'></img><p>${perguntas[i].answers[j].text}</p></div>`
         }
     }
     // console.log(Resposta[0].innerHTML)
@@ -53,18 +53,34 @@ function MostrarQuizz(elemento){
 }
 
 function VerificarResposta(elemento){
-    console.log(elemento)
+    console.log(elemento.parentNode)
     Imagem = elemento.parentNode.parentNode.children
-    console.log(Imagem[0])
-    for (i=0;i<Imagem.length;i++)
-        if (elemento.alt==='true'){
-
-            Imagem[i].style.opacity='0.3'
-            Imagem[i].removeAttribute('onclick')
-            elemento.parentNode.style.opacity='1'
+    // console.log(Imagem[0])
+        if (elemento.id==='true'){
+            for(let i=0;i<Imagem.length;i++){
+            
+            Imagem[i].children[0].removeAttribute('onclick')
+            Imagem[i].children[0].style.opacity='0.3'
+            Imagem[i].children[1].style.color='red'
+            
+            }
             elemento.parentNode.children[1].style.color='green'
+            elemento.style.opacity='1'
 
+        
         }
 
-    
+        else if(elemento.id==='false'){
+            for(let i=0;i<Imagem.length;i++){
+            
+                Imagem[i].children[0].removeAttribute('onclick')
+                Imagem[i].children[0].style.opacity='0.3'
+                Imagem[i].children[1].style.color='red'
+                
+                elemento.style.opacity='1'
+                if (Imagem[i].children[0].id==='true'){
+                    Imagem[i].children[1].style.color='green'
+                }
+            }
+        }
 }
