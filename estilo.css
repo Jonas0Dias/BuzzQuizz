@@ -4,7 +4,7 @@
 
 
 
-main {
+.ListaQuizzes {
     width: 73%;
     display: flex;
     flex-direction: column;
@@ -80,7 +80,7 @@ section {
 
 }
 
-h1 {
+.ListaQuizzes h2 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -126,15 +126,77 @@ h1 {
 
 
 
-.escondido{
+.escondido {
     display: none;
 }
 
 
+.capa {
+    height: 227px;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(image.png);
+}
+
+.PaginaDeUmQuizz {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PaginaDeUmQuizz h3 {
+    position: absolute;
+    top: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 39px;
+    line-height: 46px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* color: #FFFFFF; */
+}
 
 
+.perguntas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    /* height: 138px; */
+    background-color: aqua;
+    margin-bottom: 40px;
+}
 
 
+.pergunta{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    height: 138px;
+
+}
+.imagens{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.imagens img{
+    width: 45%;
+    height: 175px
+}
 
 
 
