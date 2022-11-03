@@ -88,13 +88,14 @@ function VerificarResposta(elemento) {
         if(clicks===perguntas.length){
             console.log(nivel.length)
             for(let i=1;i<nivel.length;i++){
-                if(pontos/perguntas.length*100 < nivel[i].minValue ){/*é pq tu ficou com zero*/
-                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${nivel[i-1].title}</div><div class="ImagemFim"><img src='${nivel[i-1].image}'></img><p>${nivel[i-1].text}</p></div></div>`+`<button class="reiniciar">Reiniciar Quizz</button><button class="voltar">Voltar para Home</button>`
+                if(pontos/perguntas.length*100 < nivel[i].minValue ){
+                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${nivel[i-1].title}</div><div class="ImagemFim"><img src='${nivel[i-1].image}'></img><p>${nivel[i-1].text}</p></div></div>`+`<button class="reiniciar">Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
                     break
                 }
 
                 else if(pontos/perguntas.length*100 >= nivel[nivel.length-1].minValue ){
-                    console.log('acertou todas')
+                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${nivel[nivel.length-1].title}</div><div class="ImagemFim"><img src='${nivel[nivel.length-1].image}'></img><p>${nivel[nivel.length-1].text}</p></div></div>`+`<button class="reiniciar">Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
+                    break
                 }
             }
         }
@@ -126,6 +127,7 @@ function pagquizz(){
 }
 function home(){
     console.log('voltar tela 1 - home');
+    window.location.reload()
 }
 function criarquizz(){
     const listaquizzes = document.querySelector('.ListaQuizzes');
