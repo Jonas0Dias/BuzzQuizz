@@ -88,53 +88,65 @@ function VerificarResposta(elemento) {
     if (clicks === perguntas.length) {
         console.log(nivel.length)
         for (let i = 1; i < nivel.length; i++) {
-            if (pontos / perguntas.length * 100 < nivel[i].minValue) {/*é pq tu ficou com zero*/
-                CapaTitulo.innerHTML += ` <div class="resultado"><div class="titulo">${nivel[i - 1].title}</div><div class="ImagemFim"><img src='${nivel[i - 1].image}'></img><p>${nivel[i - 1].text}</p></div></div>` + `<button class="reiniciar">Reiniciar Quizz</button><button class="voltar">Voltar para Home</button>`
+            if (pontos / perguntas.length * 100 < nivel[i].minValue) {
+                CapaTitulo.innerHTML += ` <div class="resultado"><div class="titulo">${nivel[i - 1].title}</div><div class="ImagemFim"><img src='${nivel[i - 1].image}'></img><p>${nivel[i - 1].text}</p></div></div>` + `<button class="reiniciar">Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
                 break
             }
+            if (clicks === perguntas.length) {
+                console.log(nivel.length)
+                for (let i = 1; i < nivel.length; i++) {
+                    if (pontos / perguntas.length * 100 < nivel[i].minValue) {/*é pq tu ficou com zero*/
+                        CapaTitulo.innerHTML += ` <div class="resultado"><div class="titulo">${nivel[i - 1].title}</div><div class="ImagemFim"><img src='${nivel[i - 1].image}'></img><p>${nivel[i - 1].text}</p></div></div>` + `<button class="reiniciar">Reiniciar Quizz</button><button class="voltar">Voltar para Home</button>`
+                        break
+                    }
 
-            else if (pontos / perguntas.length * 100 >= nivel[nivel.length - 1].minValue) {
-                console.log('acertou todas')
+                    else if (pontos / perguntas.length * 100 >= nivel[nivel.length - 1].minValue) {
+                        CapaTitulo.innerHTML += ` <div class="resultado"><div class="titulo">${nivel[nivel.length - 1].title}</div><div class="ImagemFim"><img src='${nivel[nivel.length - 1].image}'></img><p>${nivel[nivel.length - 1].text}</p></div></div>` + `<button class="reiniciar">Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
+                        break
+                    }
+                    else if (pontos / perguntas.length * 100 >= nivel[nivel.length - 1].minValue) {
+                        console.log('acertou todas')
+                    }
+                }
             }
         }
-    }
-}
 
-function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
-    const tela1 = document.querySelector('.CriarTela1');
-    const tela2 = document.querySelector('.CriarTela2');
-    const esconderh1 = document.querySelector('.CriarQuizz > h1');
-    esconderh1.classList.add('escondido');
-    tela1.classList.add('escondido');
-    tela2.classList.remove('escondido');
-}
+        function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
+            const tela1 = document.querySelector('.CriarTela1');
+            const tela2 = document.querySelector('.CriarTela2');
+            const esconderh1 = document.querySelector('.CriarQuizz > h1');
+            esconderh1.classList.add('escondido');
+            tela1.classList.add('escondido');
+            tela2.classList.remove('escondido');
+        }
 
-function irParaTelaDeCriarNiveis() { //-----TELA2-------//
-    const tela2 = document.querySelector('.CriarTela2');
-    const tela3 = document.querySelector('.tela3');
-    tela2.classList.add('escondido');
-    tela3.classList.remove('escondido');
-}
+        function irParaTelaDeCriarNiveis() { //-----TELA2-------//
+            const tela2 = document.querySelector('.CriarTela2');
+            const tela3 = document.querySelector('.tela3');
+            tela2.classList.add('escondido');
+            tela3.classList.remove('escondido');
+        }
 
-function tela4() {
-    const tela3 = document.querySelector('.tela3');
-    tela3.classList.add('escondido');
-    const tela4 = document.querySelector(".tela4");
-    tela4.classList.remove('escondido');
-}
+        function tela4() {
+            const tela3 = document.querySelector('.tela3');
+            tela3.classList.add('escondido');
+            const tela4 = document.querySelector(".tela4");
+            tela4.classList.remove('escondido');
+        }
 
-function pagquizz() {
-    console.log('tela 2');
-}
-function home() {
-    console.log('voltar tela 1 - home');
-}
-function criarquizz() {
-    const listaquizzes = document.querySelector('.ListaQuizzes');
-    const CriarQuizz = document.querySelector('.CriarQuizz');
-    listaquizzes.classList.add('escondido')
-    CriarQuizz.classList.remove('escondido')
-    promisse = ObterQuizzes;
-    promisse.then(console.log('quizzes carregados'));
-}
+        function pagquizz() {
+            console.log('tela 2');
+        }
+        function home() {
+            console.log('voltar tela 1 - home');
+            window.location.reload()
+        }
+        function criarquizz() {
+            const listaquizzes = document.querySelector('.ListaQuizzes');
+            const CriarQuizz = document.querySelector('.CriarQuizz');
+            listaquizzes.classList.add('escondido')
+            CriarQuizz.classList.remove('escondido')
+            promisse = ObterQuizzes;
+            promisse.then(console.log('quizzes carregados'));
+        }
 
