@@ -35,7 +35,7 @@ function MostrarQuizz(elemento){
     perguntas = elemento.data.questions
     CapaTitulo = document.querySelector('.PaginaDeUmQuizz')
     CapaTitulo.innerHTML = `<img class='capa' src="${elemento.data.image}" alt=""></img><h3>${elemento.data.title}</h1>`
-    alert('funfando')
+    
     // console.log(perguntas[0].answers[0].image)
     for(let i=0;i<perguntas.length;i++){
         CapaTitulo.innerHTML+= `<div class='perguntas'><div class='pergunta'><h1>${perguntas[i].title}</h1></div><div class='imagens'></div></div>`
