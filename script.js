@@ -111,22 +111,24 @@ function VerificarResposta(elemento) {
                 }
             }
         }
+    }
+}
 
-        function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
-            const tela1 = document.querySelector('.CriarTela1');
-            const tela2 = document.querySelector('.CriarTela2');
-            const esconderh1 = document.querySelector('.CriarQuizz > h1');
-            esconderh1.classList.add('escondido');
-            tela1.classList.add('escondido');
-            tela2.classList.remove('escondido');
-        }
+function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
+    const tela1 = document.querySelector('.CriarTela1');
+    const tela2 = document.querySelector('.CriarTela2');
+    const esconderh1 = document.querySelector('.CriarQuizz > h1');
+    esconderh1.classList.add('escondido');
+    tela1.classList.add('escondido');
+    tela2.classList.remove('escondido');
+}
 
-        function irParaTelaDeCriarNiveis() { //-----TELA2-------//
-            const tela2 = document.querySelector('.CriarTela2');
-            const tela3 = document.querySelector('.tela3');
-            tela2.classList.add('escondido');
-            tela3.classList.remove('escondido');
-        }
+function irParaTelaDeCriarNiveis() { //-----TELA2-------//
+    const tela2 = document.querySelector('.CriarTela2');
+    const tela3 = document.querySelector('.tela3');
+    tela2.classList.add('escondido');
+    tela3.classList.remove('escondido');
+}
 
 function paratela4() { //-----TELA3 P/ 4-------//
     const tela3 = document.querySelector('.tela3');
@@ -135,19 +137,18 @@ function paratela4() { //-----TELA3 P/ 4-------//
     tela4.classList.remove('escondido');
 }
 
-        function pagquizz() {
-            console.log('tela 2');
-        }
-        function home() {
-            console.log('voltar tela 1 - home');
-            window.location.reload()
-        }
-        function criarquizz() {
-            const listaquizzes = document.querySelector('.ListaQuizzes');
-            const CriarQuizz = document.querySelector('.CriarQuizz');
-            listaquizzes.classList.add('escondido')
-            CriarQuizz.classList.remove('escondido')
-            promisse = ObterQuizzes;
-            promisse.then(console.log('quizzes carregados'));
-        }
-
+function pagquizz() {
+    console.log('tela 2');
+}
+function home() {
+    console.log('voltar tela 1 - home');
+    window.location.reload()
+}
+function criarquizz() {
+    const listaquizzes = document.querySelector('.ListaQuizzes');
+    const CriarQuizz = document.querySelector('.CriarQuizz');
+    listaquizzes.classList.add('escondido')
+    CriarQuizz.classList.remove('escondido')
+    promisse = ObterQuizzes;
+    promisse.then(console.log('quizzes carregados'));
+}
