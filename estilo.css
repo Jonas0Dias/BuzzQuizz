@@ -153,10 +153,8 @@ section {
 
 }
 
-
-.CriarTela1  {
-    background-color: white;
-    display: flex;
+.CriarTela1 {
+      display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -455,19 +453,13 @@ input::placeholder{
     justify-content: space-between;
 }
 
-.CriarTela3 ion-icon {
+.tela3 ion-icon {
     width: 26px;
     height: 23px;
 }
 
-.CriarTela3 {
-    /* display: flex; */
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
 
-.CriarTela3 title {
+.tela3 title {
     font-family: roboto;
     font-size: 20px;
     font-weight: 700;
