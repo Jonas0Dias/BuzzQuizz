@@ -7,7 +7,8 @@ let Imagem;
 let pontos=0;
 let clicks=0;
 let nivel;
-let Niveis=[]
+let Niveis = [];
+let novoquizz = {};
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
 ObterQuizzes.then(InserirQuizzes)
@@ -102,6 +103,7 @@ function VerificarResposta(elemento) {
                 }
             }
         }
+    
 
         if(clicks===perguntas.length){
             console.log(nivel.length)
@@ -118,6 +120,7 @@ function VerificarResposta(elemento) {
             }
         }
 }
+
 let ars
 function reinicar(){
     ars = document.querySelectorAll('.resp')

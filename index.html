@@ -75,22 +75,26 @@
         <div class="CriarTela1 tela3 escondido telaNivel">
             <!--TELA 3-->
             <h1>Agora, decida os níveis</h1>
-            <div class="nivel">
+            <div class="nivel n1">
                 <title>Nível 1</title>
-                <input type=" text" placeholder="Título do nível" />
-                <input type="text" placeholder="% de acerto mínima" />
-                <input type="text" placeholder="URL da imagem do nível" />
-                <input type="text" placeholder="Descrição do nível" />
+                <input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10" placeholder="Título do nível"/>
+                <input class="per" type="number" min="0" max="100" placeholder="% de acerto mínima"/>
+                <input class="url" type="url" placeholder="URL da imagem do nível" />
+                <input data-ls-module="charCounter" class="descricao" type="text" minlength="30" placeholder="Descrição do nível">
             </div>
-            <div class="nivel linha">
-                <title>Nível 2</title>
-                <ion-icon name="create-outline"></ion-icon>
+            <div class="nivel n2">
+                <div class="linha">
+                    <title>Nível 2</title>
+                    <ion-icon name="create-outline"></ion-icon>
+                </div>
             </div>
-            <div class="nivel linha">
-                <title>Nível 3</title>
-                <ion-icon name="create-outline"></ion-icon>
+            <div class="nivel n3">
+                <div class="linha">
+                    <title>Nível 3</title>
+                    <ion-icon name="create-outline"></ion-icon>
+                </div>
             </div>
-            <button onclick="tela4()" class="botaoCriarPerguntas">Finalizar Quizz</button>
+            <button onclick="addobjetos(); paratela4()" class="botaoCriarPerguntas"> Finalizar Quizz </button>
         </div>
 
         <div class="CriarTela1 tela4 escondido telaNivel">
