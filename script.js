@@ -1,10 +1,10 @@
 let perguntas;
 let Resposta;
 let Imagem;
-let pontos=0;
-let clicks=0;
+let pontos = 0;
+let clicks = 0;
 let nivel;
-let Niveis=[]
+let Niveis = []
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
 ObterQuizzes.then(InserirQuizzes)
@@ -14,9 +14,9 @@ CapaTitulo = document.querySelector('.PaginaDeUmQuizz')
 
 function InserirQuizzes(resposta) {
     console.log(resposta.data)
-    for(i=0;i<resposta.data.length;i++){
-    TodosOsQuizzes.innerHTML = TodosOsQuizzes.innerHTML + `<div onclick = 'EscolherQuizz(this)'class='quiz' id=${resposta.data[i].id}><img src=${resposta.data[i].image}></img><p>${resposta.data[i].title}</p></div>`
-    // TodosOsQuizzes.innerHTML='<h1>Todos os Quizzes</h1>'
+    for (i = 0; i < resposta.data.length; i++) {
+        TodosOsQuizzes.innerHTML = TodosOsQuizzes.innerHTML + `<div onclick = 'EscolherQuizz(this)'class='quiz' id=${resposta.data[i].id}><img src=${resposta.data[i].image}></img><p>${resposta.data[i].title}</p></div>`
+        // TodosOsQuizzes.innerHTML='<h1>Todos os Quizzes</h1>'
     }
     // console.log(resposta.data)
 }
@@ -35,7 +35,7 @@ function MostrarQuizz(elemento) {
     nivel = elemento.data.levels
     perguntas = elemento.data.questions
     CapaTitulo.innerHTML = `<div class='capa'><img src="${elemento.data.image}" alt=""></img></div><h3>${elemento.data.title}</h1>`
-    
+
     // console.log(perguntas[0].answers[0].image)
     for (let i = 0; i < perguntas.length; i++) {
         CapaTitulo.innerHTML += `<div class='perguntas'><div class='pergunta'><h1>${perguntas[i].title}</h1></div><div class='imagens'></div></div>`
@@ -53,13 +53,13 @@ function MostrarQuizz(elemento) {
 }
 
 function VerificarResposta(elemento) {
-    clicks+=1
+    clicks += 1
     console.log(elemento.parentNode)
     Imagem = elemento.parentNode.parentNode.children
     // console.log(Imagem[0])
-        if (elemento.id==='true'){
-            pontos+=1
-            for(let i=0;i<Imagem.length;i++){
+    if (elemento.id === 'true') {
+        pontos += 1
+        for (let i = 0; i < Imagem.length; i++) {
             Imagem[i].children[0].removeAttribute('onclick')
             Imagem[i].children[0].style.opacity = '0.3'
             Imagem[i].children[1].style.color = 'red'
@@ -71,63 +71,65 @@ function VerificarResposta(elemento) {
 
     }
 
-        else if(elemento.id==='false'){
-            for(let i=0;i<Imagem.length;i++){
-            
-                Imagem[i].children[0].removeAttribute('onclick')
-                Imagem[i].children[0].style.opacity='0.3'
-                Imagem[i].children[1].style.color='red'
-                
-                elemento.style.opacity='1'
-                if (Imagem[i].children[0].id==='true'){
-                    Imagem[i].children[1].style.color='green'
-                }
+    else if (elemento.id === 'false') {
+        for (let i = 0; i < Imagem.length; i++) {
+
+            Imagem[i].children[0].removeAttribute('onclick')
+            Imagem[i].children[0].style.opacity = '0.3'
+            Imagem[i].children[1].style.color = 'red'
+
+            elemento.style.opacity = '1'
+            if (Imagem[i].children[0].id === 'true') {
+                Imagem[i].children[1].style.color = 'green'
             }
         }
+    }
 
-        if(clicks===perguntas.length){
-            console.log(nivel.length)
-            for(let i=1;i<nivel.length;i++){
-                if(pontos/perguntas.length*100 < nivel[i].minValue ){/*é pq tu ficou com zero*/
-                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${nivel[i-1].title}</div><div class="ImagemFim"><img src='${nivel[i-1].image}'></img><p>${nivel[i-1].text}</p></div></div>`+`<button class="reiniciar">Reiniciar Quizz</button><button class="voltar">Voltar para Home</button>`
-                    break
-                }
+    if (clicks === perguntas.length) {
+        console.log(nivel.length)
+        for (let i = 1; i < nivel.length; i++) {
+            if (pontos / perguntas.length * 100 < nivel[i].minValue) {/*é pq tu ficou com zero*/
+                CapaTitulo.innerHTML += ` <div class="resultado"><div class="titulo">${nivel[i - 1].title}</div><div class="ImagemFim"><img src='${nivel[i - 1].image}'></img><p>${nivel[i - 1].text}</p></div></div>` + `<button class="reiniciar">Reiniciar Quizz</button><button class="voltar">Voltar para Home</button>`
+                break
+            }
 
-                else if(pontos/perguntas.length*100 >= nivel[nivel.length-1].minValue ){
-                    console.log('acertou todas')
-                }
+            else if (pontos / perguntas.length * 100 >= nivel[nivel.length - 1].minValue) {
+                console.log('acertou todas')
             }
         }
+    }
 }
 
-function irParaTelaDeCriarPerguntas(){ //-----TELA1-------//
+function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
     const tela1 = document.querySelector('.CriarTela1');
     const tela2 = document.querySelector('.CriarTela2');
-    tela1.classList.add ('escondido');
-    tela2.classList.remove ('escondido');
+    const esconderh1 = document.querySelector('.CriarQuizz > h1');
+    esconderh1.classList.add('escondido');
+    tela1.classList.add('escondido');
+    tela2.classList.remove('escondido');
 }
 
-function irParaTelaDeCriarNiveis(){ //-----TELA2-------//
+function irParaTelaDeCriarNiveis() { //-----TELA2-------//
     const tela2 = document.querySelector('.CriarTela2');
     const tela3 = document.querySelector('.tela3');
-    tela2.classList.add ('escondido');
-    tela3.classList.remove ('escondido');
+    tela2.classList.add('escondido');
+    tela3.classList.remove('escondido');
 }
 
-function tela4(){
+function tela4() {
     const tela3 = document.querySelector('.tela3');
-    tela3.classList.add ('escondido');
+    tela3.classList.add('escondido');
     const tela4 = document.querySelector(".tela4");
     tela4.classList.remove('escondido');
 }
 
-function pagquizz(){
+function pagquizz() {
     console.log('tela 2');
 }
-function home(){
+function home() {
     console.log('voltar tela 1 - home');
 }
-function criarquizz(){
+function criarquizz() {
     const listaquizzes = document.querySelector('.ListaQuizzes');
     const CriarQuizz = document.querySelector('.CriarQuizz');
     listaquizzes.classList.add('escondido')
@@ -135,3 +137,4 @@ function criarquizz(){
     promisse = ObterQuizzes;
     promisse.then(console.log('quizzes carregados'));
 }
+
