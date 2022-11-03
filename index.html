@@ -26,9 +26,8 @@
         </section>
     </main>
     <main class="CriarQuizz escondido">
-
-        <div class='CriarTela1 '>
-            <h1>Comece pelo começo</h1>
+        <h1>Comece pelo começo</h1>
+        <div class='CriarTela1'>
             <input type=" text" placeholder="Título do seu quizz" />
             <input type="text" placeholder="URL da imagem do seu quizz" />
             <input type="text" placeholder="Quantidade de perguntas do quizz" />
@@ -42,31 +41,38 @@
 
         <div class="CriarTela2 escondido">
             <h1>Crie suas perguntas</h1>
-            <div class='perguntas'>
+            <div class='perguntas-iniciais'>
                 <h1>Pergunta 1</h1>
-                <input type=" text" placeholder="Título do seu quizz" />
-                <input type="text" placeholder="URL da imagem do seu quizz" />
+                <input type=" text" placeholder="Texto da pergunta" />
+                <input type="text" placeholder="Cor de fundo da pergunta" />
                 <h1>Resposta correta</h1>
-                <input type="text" placeholder="Quantidade de perguntas do quizz" />
-                <input type="text" placeholder="Quantidade de níveis do quizz" />
+                <input type="text" placeholder="Resposta correta" />
+                <input type="text" placeholder="URL da imagem" />
                 <h1>Respostas incorretas</h1>
-                <input type="text" placeholder="Quantidade de perguntas do quizz" />
-                <input type="text" placeholder="Quantidade de níveis do quizz" />
-                <input type="text" placeholder="Quantidade de perguntas do quizz" />
-                <input type="text" placeholder="Quantidade de níveis do quizz" />
-                <input type="text" placeholder="Quantidade de perguntas do quizz" />
-                <input type="text" placeholder="Quantidade de níveis do quizz" />
-
-                <h1>Pergunta 2</h1>
-                ionicons
-
-                <button onclick="irParaTelaDeCriarNiveis()" class="botaoCriarPerguntas">Prosseguir para criar
-                    níveis</button>
+                <input type="text" placeholder="Resposta incorreta 1" />
+                <input type="text" placeholder="URL da imagem 1" />
+                <input type="text" placeholder="Resposta incorreta 2" />
+                <input type="text" placeholder="URL da imagem 2" />
+                <input type="text" placeholder="Resposta incorreta 3" />
+                <input type="text" placeholder="URL da imagem 3" />
             </div>
+            <div class="pergunta2">
+                <h1>Pergunta 2</h1>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+            <div class="pergunta3">
+                <h1>Pergunta 3</h1>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+
+
+            <button onclick="irParaTelaDeCriarNiveis()" class="botaoCriarPerguntas">Prosseguir para criar
+                níveis</button>
+        </div>
 
         </div>
 
-        <div class="CriarTela1 tela3 escondido">
+        <div class="CriarTela1 tela3 escondido telaNivel">
             <!--TELA 3-->
             <h1>Agora, decida os níveis</h1>
             <div class="nivel">
@@ -87,7 +93,7 @@
             <button onclick="tela4()" class="botaoCriarPerguntas">Finalizar Quizz</button>
         </div>
 
-        <div class="CriarTela1 tela4 escondido">
+        <div class="CriarTela1 tela4 escondido telaNivel">
             <!--TELA 4-->
             <h1>Seu quizz está pronto!</h1>
             <div onclick="pagquizz()" class='imgquizz'>URL IMAGEM</div>

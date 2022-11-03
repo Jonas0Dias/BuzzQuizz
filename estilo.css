@@ -138,34 +138,44 @@ section {
 
 
 /* INICIO TELA DE CRIAÇÃO DO QUIZZ */
+.CriarQuizz{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
 
-
-.CriarQuizz h1 {
-    width: 100%;
+.CriarQuizz > h1 {
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 40px;
-    cursor: pointer;
+    margin: 50px;
+   
+
+}
+.CriarTela2 h1 {
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+   
 
 }
 
 .CriarTela1 {
+    background-color: #ffffff;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 27px;
+    padding: 15px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
 
-input {
-    max-width: 564px;
+.CriarTela1 input,.CriarTela2 input {
+    width: 375px;
     height: 46px;
     outline: none;
     border: 1px solid #D1D1D1;
@@ -175,7 +185,8 @@ input {
 
 }
 
-input::placeholder {
+
+.CriarTela1 input::placeholder,.CriarTela2 input::placeholder {
     font-style: italic;
     font-weight: 400;
     font-size: 19px;
@@ -184,6 +195,8 @@ input::placeholder {
     line-height: 23px;
     padding-left: 8px;
 }
+
+
 
 .botaoCriarPerguntas {
     width: 325px;
@@ -197,10 +210,27 @@ input::placeholder {
     border-radius: 15px;
     border: none;
 }
-
+.CriarTela2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.perguntas-iniciais{
+    width: 400px;
+    background-color: #ffffff;
+}
+.pergunta2{
+    width: 400px;
+    background-color: red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
 .escondido {
     display: none;
 }
+
 
 .capa {
     height: 227px;
@@ -352,7 +382,7 @@ input::placeholder {
     opacity: 0.3;
 }
 
-.CriarQuizz h1 {
+.telaNivel .CriarQuizz h1 {
     font-family: roboto;
     font-size: 23px;
     font-weight: 700;
