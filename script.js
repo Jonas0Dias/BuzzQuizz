@@ -73,13 +73,11 @@ function VerificarResposta(elemento) {
     clicks+=1
     
     // console.log(elemento.parentNode.parentNode.parentNode.parentNode.children)
-    clicks += 1
-    console.log(elemento.parentNode)
     Imagem = elemento.parentNode.parentNode.children
     // console.log(Imagem[0])
-    if (elemento.id === 'true') {
-        pontos += 1
-        for (let i = 0; i < Imagem.length; i++) {
+        if (elemento.id==='true'){
+            pontos+=1
+            for(let i=0;i<Imagem.length;i++){
             Imagem[i].children[0].removeAttribute('onclick')
             Imagem[i].children[0].style.opacity = '0.3'
             Imagem[i].children[1].style.color = 'red'
@@ -91,19 +89,19 @@ function VerificarResposta(elemento) {
 
     }
 
-    else if (elemento.id === 'false') {
-        for (let i = 0; i < Imagem.length; i++) {
-
-            Imagem[i].children[0].removeAttribute('onclick')
-            Imagem[i].children[0].style.opacity = '0.3'
-            Imagem[i].children[1].style.color = 'red'
-
-            elemento.style.opacity = '1'
-            if (Imagem[i].children[0].id === 'true') {
-                Imagem[i].children[1].style.color = 'green'
+        else if(elemento.id==='false'){
+            for(let i=0;i<Imagem.length;i++){
+            
+                Imagem[i].children[0].removeAttribute('onclick')
+                Imagem[i].children[0].style.opacity='0.3'
+                Imagem[i].children[1].style.color='red'
+                
+                elemento.style.opacity='1'
+                if (Imagem[i].children[0].id==='true'){
+                    Imagem[i].children[1].style.color='green'
+                }
             }
         }
-    }
 
         if(clicks===perguntas.length){
             console.log(nivel.length)
@@ -152,42 +150,32 @@ function irParaTelaDeCriarPerguntas(){ //-----TELA1-------//
     tela2.classList.remove ('escondido');
 }
 
-        function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
-            const tela1 = document.querySelector('.CriarTela1');
-            const tela2 = document.querySelector('.CriarTela2');
-            const esconderh1 = document.querySelector('.CriarQuizz > h1');
-            esconderh1.classList.add('escondido');
-            tela1.classList.add('escondido');
-            tela2.classList.remove('escondido');
-        }
+function irParaTelaDeCriarNiveis(){ //-----TELA2-------//
+    const tela2 = document.querySelector('.CriarTela2');
+    const tela3 = document.querySelector('.tela3');
+    tela2.classList.add ('escondido');
+    tela3.classList.remove ('escondido');
+}
 
-        function irParaTelaDeCriarNiveis() { //-----TELA2-------//
-            const tela2 = document.querySelector('.CriarTela2');
-            const tela3 = document.querySelector('.tela3');
-            tela2.classList.add('escondido');
-            tela3.classList.remove('escondido');
-        }
+function tela4(){
+    const tela3 = document.querySelector('.tela3');
+    tela3.classList.add ('escondido');
+    const tela4 = document.querySelector(".tela4");
+    tela4.classList.remove('escondido');
+}
 
-        function tela4() {
-            const tela3 = document.querySelector('.tela3');
-            tela3.classList.add('escondido');
-            const tela4 = document.querySelector(".tela4");
-            tela4.classList.remove('escondido');
-        }
-
-        function pagquizz() {
-            console.log('tela 2');
-        }
-        function home() {
-            console.log('voltar tela 1 - home');
-            window.location.reload()
-        }
-        function criarquizz() {
-            const listaquizzes = document.querySelector('.ListaQuizzes');
-            const CriarQuizz = document.querySelector('.CriarQuizz');
-            listaquizzes.classList.add('escondido')
-            CriarQuizz.classList.remove('escondido')
-            promisse = ObterQuizzes;
-            promisse.then(console.log('quizzes carregados'));
-        }
-
+function pagquizz(){
+    console.log('tela 2');
+}
+function home(){
+    console.log('voltar tela 1 - home');
+    window.location.reload()
+}
+function criarquizz(){
+    const listaquizzes = document.querySelector('.ListaQuizzes');
+    const CriarQuizz = document.querySelector('.CriarQuizz');
+    listaquizzes.classList.add('escondido')
+    CriarQuizz.classList.remove('escondido')
+    promisse = ObterQuizzes;
+    promisse.then(console.log('quizzes carregados'));
+}
