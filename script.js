@@ -4,7 +4,8 @@ let Imagem;
 let pontos = 0;
 let clicks = 0;
 let nivel;
-let Niveis = []
+let Niveis = [];
+let novoquizz = {};
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
 ObterQuizzes.then(InserirQuizzes)
@@ -127,12 +128,12 @@ function VerificarResposta(elemento) {
             tela3.classList.remove('escondido');
         }
 
-        function tela4() {
-            const tela3 = document.querySelector('.tela3');
-            tela3.classList.add('escondido');
-            const tela4 = document.querySelector(".tela4");
-            tela4.classList.remove('escondido');
-        }
+function paratela4() { //-----TELA3 P/ 4-------//
+    const tela3 = document.querySelector('.tela3');
+    tela3.classList.add('escondido');
+    const tela4 = document.querySelector(".tela4");
+    tela4.classList.remove('escondido');
+}
 
         function pagquizz() {
             console.log('tela 2');
