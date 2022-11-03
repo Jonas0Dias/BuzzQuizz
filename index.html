@@ -27,7 +27,7 @@
     </main>
     <main class="CriarQuizz">
 
-        <div class='CriarTela1 escondido'>
+        <div class='CriarTela1 '>
             <h1>Comece pelo começo</h1>
             <input type=" text" placeholder="Título do seu quizz" />
             <input type="text" placeholder="URL da imagem do seu quizz" />
@@ -60,13 +60,14 @@
                 <h1>Pergunta 2</h1>
                 ionicons
 
-                <button onclick="irParaTelaDeCriarPerguntas()" class="botaoCriarPerguntas">Prosseguir para criar
-                    perguntas</button>
+                <button onclick="irParaTelaDeCriarNiveis()" class="botaoCriarPerguntas">Prosseguir para criar
+                    níveis</button>
             </div>
 
         </div>
 
-        <div class="CriarTela1 tela3">
+        <div class="CriarTela1 tela3 escondido">
+            <!--TELA 3-->
             <h1>Agora, decida os níveis</h1>
             <div class="nivel">
                 <title>Nível 1</title>
@@ -86,21 +87,16 @@
             <button onclick="tela4()" class="botaoCriarPerguntas">Finalizar Quizz</button>
         </div>
 
-        <div class="CriarTela4 escondido">
+        <div class="CriarTela1 tela4 escondido">
+            <!--TELA 4-->
             <h1>Seu quizz está pronto!</h1>
-            <div class='imgquizz'>URL IMAGEM</div>
+            <div onclick="pagquizz()" class='imgquizz'>URL IMAGEM</div>
             <div class="botoes">
-                <button class="botaoCriarPerguntas">Acessar Quizz</button>
-                <button class="voltar">Voltar pra home</button>
+                <button onclick="pagquizz()" class="botaoCriarPerguntas">Acessar Quizz</button>
+                <button onclick="home()" class="voltar">Voltar pra home</button>
             </div>
 
-            <div class="CriarTela3">
-
-            </div>
-
-            <div class="CriarTela4">
-
-            </div>
+        </div>
     </main>
 
 
@@ -108,7 +104,7 @@
 
     <main class="PaginaDeUmQuizz">
 
-       
+
 
 
 

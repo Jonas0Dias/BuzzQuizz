@@ -105,20 +105,30 @@ function VerificarResposta(elemento) {
         }
 }
 
-function tela4(){
-    const tela3 = document.querySelector('.CriarTela3');
-    console.log(tela3);
-    tela3.classList.add ('escondido');
-    const tela4 = document.querySelector(".CriarTela4");
-    tela4.classList.remove('escondido');
-    console.log(tela4);
+function irParaTelaDeCriarPerguntas(){ //-----TELA1-------//
+    const tela1 = document.querySelector('.CriarTela1');
+    const tela2 = document.querySelector('.CriarTela2');
+    tela1.classList.add ('escondido');
+    tela2.classList.remove ('escondido');
+}
+
+function irParaTelaDeCriarNiveis(){ //-----TELA2-------//
+    const tela2 = document.querySelector('.CriarTela2');
+    const tela3 = document.querySelector('.tela3');
+    tela2.classList.add ('escondido');
+    tela3.classList.remove ('escondido');
 }
 
 function tela4(){
     const tela3 = document.querySelector('.tela3');
-    console.log(tela3);
     tela3.classList.add ('escondido');
-    const tela4 = document.querySelector(".CriarTela4");
+    const tela4 = document.querySelector(".tela4");
     tela4.classList.remove('escondido');
-    console.log(tela4);
+}
+
+function pagquizz(){
+    console.log('tela 2');
+}
+function home(){
+    console.log('voltar tela 1 - home');
 }

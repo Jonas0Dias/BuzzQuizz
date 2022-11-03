@@ -138,7 +138,7 @@ section {
 /* INICIO TELA DE CRIAÇÃO DO QUIZZ */
 
 
-.CriarQuizz  h1{
+.CriarQuizz h1 {
     width: 100%;
     font-family: 'Roboto';
     font-weight: 700;
@@ -154,7 +154,7 @@ section {
 }
 
 .CriarTela1 {
-      display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -162,7 +162,7 @@ section {
 }
 
 
-input  {
+input {
     max-width: 564px;
     height: 46px;
     outline: none;
@@ -172,7 +172,8 @@ input  {
     margin-bottom: 14px;
 
 }
-input::placeholder{
+
+input::placeholder {
     font-style: italic;
     font-weight: 400;
     font-size: 19px;
@@ -430,7 +431,7 @@ input::placeholder{
     color: #FFF5F4;
 }
 
-.voltar{
+.voltar {
     width: 240px;
     height: 50px;
     background: none;
@@ -444,7 +445,7 @@ input::placeholder{
     justify-content: center;
     align-items: center;
     margin-bottom: 16px;
-    color:#818181;
+    color: #818181;
 
 }
 
@@ -469,12 +470,13 @@ input::placeholder{
     justify-content: flex-start;
 }
 
-.botoes{
+.botoes {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.voltar{
+
+.voltar {
     width: 325px;
     height: 54px;
     font-family: 'roboto';
@@ -486,6 +488,7 @@ input::placeholder{
     border-radius: 15px;
     border: none;
 }
+
 .imgquizz {
     width: 500px;
     height: 266px;
@@ -496,8 +499,9 @@ input::placeholder{
     margin-right: 15px;
     z-index: 1;
 }
-button:hover{
-    cursor:pointer;
+
+button:hover {
+    cursor: pointer;
 }
 
 .nivel {
