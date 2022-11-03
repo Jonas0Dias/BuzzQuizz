@@ -1,12 +1,16 @@
 let perguntas;
 let Resposta;
 let Imagem;
-
-
+let pontos=0;
+let clicks=0;
+let nivel;
+let Niveis=[]
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
 ObterQuizzes.then(InserirQuizzes)
 BotaoCriar = document.querySelector(".ListaQuizzes")
+CriarQuizz = document.querySelector('.CriarQuizz')
+CapaTitulo = document.querySelector('.PaginaDeUmQuizz')
 
 function InserirQuizzes(resposta){
     console.log(resposta.data)
@@ -20,7 +24,9 @@ function InserirQuizzes(resposta){
 
 function Esconder(){
     
+    
     BotaoCriar.classList.add('escondido')
+    CriarQuizz.classList.remove('escondido')
 }
 
 function EscolherQuizz(elemento){
@@ -31,10 +37,9 @@ function EscolherQuizz(elemento){
 }
 
 function MostrarQuizz(elemento){
-    // console.log(elemento.data)
+    nivel = elemento.data.levels
     perguntas = elemento.data.questions
-    CapaTitulo = document.querySelector('.PaginaDeUmQuizz')
-    CapaTitulo.innerHTML = `<img class='capa' src="${elemento.data.image}" alt=""></img><h3>${elemento.data.title}</h1>`
+    CapaTitulo.innerHTML = `<div class='capa'><img src="${elemento.data.image}" alt=""></img></div><h3>${elemento.data.title}</h1>`
     
     // console.log(perguntas[0].answers[0].image)
     for(let i=0;i<perguntas.length;i++){
@@ -53,12 +58,13 @@ function MostrarQuizz(elemento){
 }
 
 function VerificarResposta(elemento){
+    clicks+=1
     console.log(elemento.parentNode)
     Imagem = elemento.parentNode.parentNode.children
     // console.log(Imagem[0])
         if (elemento.id==='true'){
+            pontos+=1
             for(let i=0;i<Imagem.length;i++){
-            
             Imagem[i].children[0].removeAttribute('onclick')
             Imagem[i].children[0].style.opacity='0.3'
             Imagem[i].children[1].style.color='red'
@@ -80,6 +86,20 @@ function VerificarResposta(elemento){
                 elemento.style.opacity='1'
                 if (Imagem[i].children[0].id==='true'){
                     Imagem[i].children[1].style.color='green'
+                }
+            }
+        }
+
+        if(clicks===perguntas.length){
+            console.log(nivel.length)
+            for(let i=1;i<nivel.length;i++){
+                if(pontos/perguntas.length*100 < nivel[i].minValue ){/*é pq tu ficou com zero*/
+                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${nivel[i-1].title}</div><div class="ImagemFim"><img src='${nivel[i-1].image}'></img><p>${nivel[i-1].text}</p></div></div>`+`<button class="reiniciar">Reiniciar Quizz</button><button class="voltar">Voltar para Home</button>`
+                    break
+                }
+
+                else if(pontos/perguntas.length*100 >= nivel[nivel.length-1].minValue ){
+                    console.log('acertou todas')
                 }
             }
         }
