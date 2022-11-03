@@ -2,6 +2,8 @@
 
 * {
     box-sizing: border-box;
+    scroll-behavior: smooth;
+      
 }
 
 body {
@@ -331,7 +333,7 @@ input::placeholder {
 
 .imagem img {
     width: 100%;
-    height: 138px;
+    height: auto;
 }
 
 .imagem p {
@@ -557,4 +559,16 @@ button:hover {
         width: 340px;
         height: 181px;
     }
-}
+
+    .perguntas {
+        width: 100%;
+    }
+
+    .resultado{
+        width: 100%;
+    }
+
+    .imagem{
+        width: 48%;
+    }
+    }

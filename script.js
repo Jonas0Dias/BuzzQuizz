@@ -1,3 +1,6 @@
+
+//----ÍNICIO JS JONAS----//
+
 let perguntas;
 let Resposta;
 let Imagem;
@@ -31,6 +34,18 @@ function EscolherQuizz(elemento) {
 
 }
 
+function shuffleArray(arr) {
+    // Loop em todos os elementos
+for (let i = arr.length - 1; i > 0; i--) {
+        // Escolhendo elemento aleatório
+    const j = Math.floor(Math.random() * (i + 1));
+    // Reposicionando elemento
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+}
+// Retornando array com aleatoriedade
+return arr;
+}
+
 function MostrarQuizz(elemento) {
     nivel = elemento.data.levels
     perguntas = elemento.data.questions
@@ -38,14 +53,16 @@ function MostrarQuizz(elemento) {
     
     // console.log(perguntas[0].answers[0].image)
     for (let i = 0; i < perguntas.length; i++) {
+        shuffleArray(perguntas[i].answers)
         CapaTitulo.innerHTML += `<div class='perguntas'><div class='pergunta'><h1>${perguntas[i].title}</h1></div><div class='imagens'></div></div>`
         Pergunta = document.querySelectorAll('.pergunta')
         Pergunta[i].style.background = `${perguntas[i].color}`
         Resposta = document.querySelectorAll('.imagens')
         for (let j = 0; j < perguntas[i].answers.length; j++) {
-
+            
             Resposta[i].innerHTML += `<div class='imagem'><img class='resp' onclick='VerificarResposta(this)' id='${perguntas[i].answers[j].isCorrectAnswer}' src='${perguntas[i].answers[j].image}'></img><p>${perguntas[i].answers[j].text}</p></div>`
         }
+        
     }
     // console.log(Resposta[0].innerHTML)
 
@@ -54,7 +71,8 @@ function MostrarQuizz(elemento) {
 
 function VerificarResposta(elemento) {
     clicks+=1
-    console.log(elemento.parentNode)
+    
+    // console.log(elemento.parentNode.parentNode.parentNode.parentNode.children)
     Imagem = elemento.parentNode.parentNode.children
     // console.log(Imagem[0])
         if (elemento.id==='true'){
@@ -89,17 +107,41 @@ function VerificarResposta(elemento) {
             console.log(nivel.length)
             for(let i=1;i<nivel.length;i++){
                 if(pontos/perguntas.length*100 < nivel[i].minValue ){
-                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${nivel[i-1].title}</div><div class="ImagemFim"><img src='${nivel[i-1].image}'></img><p>${nivel[i-1].text}</p></div></div>`+`<button class="reiniciar">Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
+                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${Math.round(pontos/perguntas.length*100)}% de acerto: ${nivel[i-1].title}</div><div class="ImagemFim"><img src='${nivel[i-1].image}'></img><p>${nivel[i-1].text}</p></div></div>`+`<button class="reiniciar" onclick='reinicar()' >Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
                     break
                 }
 
                 else if(pontos/perguntas.length*100 >= nivel[nivel.length-1].minValue ){
-                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${nivel[nivel.length-1].title}</div><div class="ImagemFim"><img src='${nivel[nivel.length-1].image}'></img><p>${nivel[nivel.length-1].text}</p></div></div>`+`<button class="reiniciar">Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
+                    CapaTitulo.innerHTML+=  ` <div class="resultado"><div class="titulo">${Math.round(pontos/perguntas.length*100)}% de acerto: ${nivel[nivel.length-1].title}</div><div class="ImagemFim"><img src='${nivel[nivel.length-1].image}'></img><p>${nivel[nivel.length-1].text}</p></div></div>`+`<button class="reiniciar" onclick='reinicar()'>Reiniciar Quizz</button><button onclick ='home()' class="voltar">Voltar para Home</button>`
                     break
                 }
             }
         }
 }
+let ars
+function reinicar(){
+    ars = document.querySelectorAll('.resp')
+    for(let i=0;i<ars.length;i++){
+        ars[i].setAttribute('onclick','VerificarResposta(this)')
+        ars[i].style.opacity='1'
+        ars[i].parentNode.children[1].style.color='black'
+
+    }
+
+    for(let j=0;j<perguntas.length;j++){
+        shuffleArray(perguntas[j].answers)
+    }
+    pontos=0
+    clicks=0
+    document.querySelector('.pergunta').scrollIntoView()
+    CapaTitulo.children[CapaTitulo.children.length-1].outerHTML =''
+    CapaTitulo.children[CapaTitulo.children.length-1].outerHTML =''
+    CapaTitulo.children[CapaTitulo.children.length-1].outerHTML =''
+    
+}
+
+//-------FIM JS JONAS------//
+
 
 function irParaTelaDeCriarPerguntas(){ //-----TELA1-------//
     const tela1 = document.querySelector('.CriarTela1');
