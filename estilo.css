@@ -128,10 +128,20 @@ section {
 
 /* INICIO TELA DE CRIAÇÃO DO QUIZZ */
 
-.CriarQuizz {
+
+.CriarQuizz  h1{
+    width: 100%;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    cursor: pointer;
+
 }
 
 .CriarTela1 {
