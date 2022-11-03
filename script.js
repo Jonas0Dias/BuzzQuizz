@@ -22,12 +22,7 @@ function InserirQuizzes(resposta) {
 }
 
 
-function Esconder() {
 
-    
-    BotaoCriar.classList.add('escondido')
-    CriarQuizz.classList.remove('escondido')
-}
 
 function EscolherQuizz(elemento) {
     BuscarQuizz = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${elemento.id}`)
@@ -131,4 +126,12 @@ function pagquizz(){
 }
 function home(){
     console.log('voltar tela 1 - home');
+}
+function criarquizz(){
+    const listaquizzes = document.querySelector('.ListaQuizzes');
+    const CriarQuizz = document.querySelector('.CriarQuizz');
+    listaquizzes.classList.add('escondido')
+    CriarQuizz.classList.remove('escondido')
+    promisse = ObterQuizzes;
+    promisse.then(console.log('quizzes carregados'));
 }
