@@ -104,3 +104,21 @@ function VerificarResposta(elemento) {
             }
         }
 }
+
+function tela4(){
+    const tela3 = document.querySelector('.CriarTela3');
+    console.log(tela3);
+    tela3.classList.add ('escondido');
+    const tela4 = document.querySelector(".CriarTela4");
+    tela4.classList.remove('escondido');
+    console.log(tela4);
+}
+
+function tela4(){
+    const tela3 = document.querySelector('.CriarTela3');
+    console.log(tela3);
+    tela3.classList.add ('escondido');
+    const tela4 = document.querySelector(".CriarTela4");
+    tela4.classList.remove('escondido');
+    console.log(tela4);
+}
