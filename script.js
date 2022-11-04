@@ -157,19 +157,27 @@ function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
 
 function irParaTelaDeCriarNiveis() { //-----TELA2-------//
     const tela2 = document.querySelector('.CriarTela2');
-    const tela3 = document.querySelector('.tela3');
-    tela2.classList.add('escondido');
-    tela3.classList.remove('escondido');
+    const tela3 = document.querySelector('.tela3'); tela2.classList.add('escondido');
+    tela3.classList.remove('sumir');
 }
 
 function tela4() {
     const tela3 = document.querySelector('.tela3');
     tela3.classList.add('escondido');
     const tela4 = document.querySelector(".tela4");
-    tela4.classList.remove('escondido');
+    tela3.classList.add('sumir');
+    tela4.classList.remove('sumir');
+}
+
+function addobjetos() {
+
 }
 
 function pagquizz() {
+    const tela2 = document.querySelector('.CriarTela2');
+    const tela4 = document.querySelector(".tela4");
+    tela4.classList.add('sumir');
+    tela2.classList.remove('escondido');
     console.log('tela 2');
 }
 function home() {

@@ -138,20 +138,20 @@ section {
 
 
 /* INICIO TELA DE CRIAÇÃO DO QUIZZ */
-.CriarQuizz{
+.CriarQuizz {
     display: flex;
     align-items: center;
     text-align: center;
     flex-direction: column;
 }
 
-.CriarQuizz > h1 {
+.CriarQuizz>h1 {
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
     margin: 50px;
-   
+
 
 }
 .CriarTela2 > h1 {
@@ -183,7 +183,8 @@ h6{
 }
 
 
-.CriarTela1 input,.CriarTela2 input {
+.CriarTela1 input,
+.CriarTela2 input {
     width: 375px;
     height: 46px;
     outline: none;
@@ -195,7 +196,8 @@ h6{
 }
 
 
-.CriarTela1 input::placeholder,.CriarTela2 input::placeholder {
+.CriarTela1 input::placeholder,
+.CriarTela2 input::placeholder {
     font-style: italic;
     font-weight: 400;
     font-size: 19px;
@@ -219,17 +221,20 @@ h6{
     border-radius: 15px;
     border: none;
 }
-.CriarTela2{
+
+.CriarTela2 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-.perguntas-iniciais{
+
+.perguntas-iniciais {
     width: 400px;
     background-color: #ffffff;
 }
-.pergunta2{
+
+.pergunta2 {
     width: 400px;
     height: 74px;
     background-color: #ffffff;
@@ -263,6 +268,7 @@ h6{
     margin-top: 22px;
 
 }
+
 .escondido {
     display: none;
 }
@@ -523,17 +529,36 @@ h6{
     justify-content: space-between;
 }
 
+.CriarTela {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sumir {
+    display: none;
+}
+
 .tela3 ion-icon {
     width: 26px;
     height: 23px;
 }
 
+.CriarTela h1 {
+    font-family: "roboto";
+    font-weight: 700;
+    font-size: 23px;
+    margin-top: 63px;
+    margin-bottom: 43px;
+    justify-content: center;
+}
 
 .tela3 title {
     font-family: roboto;
     font-size: 20px;
     font-weight: 700;
     line-height: 23px;
+    margin-bottom: 12px;
     color: #000000;
     display: flex;
     justify-content: flex-start;
@@ -583,7 +608,27 @@ button:hover {
     flex-direction: column;
     margin-bottom: 24px;
 }
-
+.nivel title{
+    margin-bottom: 12px;
+}
+.nivel input {
+    width: 564px;
+    height: 46px;
+    outline: none;
+    border: 1px solid #D1D1D1;
+    border-radius: 5px;
+    margin-top: 9px;
+    margin-bottom: 14px;
+}
+.nivel ::placeholder{
+    font-style: italic;
+    font-weight: 400;
+    font-size: 19px;
+    font-family: 'Roboto';
+    color: #BABABA;
+    line-height: 23px;
+    padding-left: 8px;
+}
 
 @media (max-width:1100px) {
     section h1 {
@@ -625,6 +670,7 @@ button:hover {
     .imgquizz {
         width: 340px;
         height: 181px;
+        border-radius: 5px;
     }
 
     .perguntas {
