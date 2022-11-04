@@ -104,6 +104,7 @@ section {
 }
 
 .quiz img {
+    object-fit: cover;
     width: 340px;
     height: 181px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(image.png);
@@ -340,6 +341,7 @@ h6{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .pergunta h1 {
@@ -455,6 +457,7 @@ h6{
     font-size: 19px;
     line-height: 22px;
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
     background-color: #c42f2f;
@@ -683,5 +686,24 @@ button:hover {
 
     .imagem{
         width: 48%;
+    }
+
+    .ImagemFim{
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .ImagemFim img{
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .ImagemFim p{
+        margin-top: 10px;
+    }
+    .quiz{
+        width: 100%;
+        height: auto;
     }
     }
