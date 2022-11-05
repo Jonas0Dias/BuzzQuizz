@@ -16,10 +16,11 @@ BotaoCriar = document.querySelector(".ListaQuizzes")
 CriarQuizz = document.querySelector('.CriarQuizz')
 CapaTitulo = document.querySelector('.PaginaDeUmQuizz')
 
+
 function InserirQuizzes(resposta) {
     console.log(resposta.data)
     for (i = 0; i < resposta.data.length; i++) {
-        TodosOsQuizzes.innerHTML = TodosOsQuizzes.innerHTML + `<div onclick = 'EscolherQuizz(this)'class='quiz' id=${resposta.data[i].id}><img src=${resposta.data[i].image}></img><p>${resposta.data[i].title}</p></div>`
+        TodosOsQuizzes.innerHTML = TodosOsQuizzes.innerHTML + `<div  onclick = 'EscolherQuizz(this)'class='quiz' id=${resposta.data[i].id}><img style ='background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${resposta.data[i].image});' src=${resposta.data[i].image}></img><p>${resposta.data[i].title}</p></div>`
         // TodosOsQuizzes.innerHTML='<h1>Todos os Quizzes</h1>'
     }
     // console.log(resposta.data)
@@ -72,9 +73,11 @@ function MostrarQuizz(elemento) {
 
 function VerificarResposta(elemento) {
     clicks += 1
-
+    ArrayPerguntas = document.querySelectorAll('.perguntas')
+    
     // console.log(elemento.parentNode.parentNode.parentNode.parentNode.children)
     Imagem = elemento.parentNode.parentNode.children
+    divPergunta = Imagem[0].parentNode.parentNode
     // console.log(Imagem[0])
     if (elemento.id === 'true') {
         pontos += 1
@@ -82,17 +85,21 @@ function VerificarResposta(elemento) {
             Imagem[i].children[0].removeAttribute('onclick')
             Imagem[i].children[0].style.opacity = '0.3'
             Imagem[i].children[1].style.color = 'red'
-
+            console.log(divPergunta===ArrayPerguntas[i])
         }
         elemento.parentNode.children[1].style.color = 'green'
         elemento.style.opacity = '1'
-
-
+        function Scrol1(){
+            if(divPergunta !== ArrayPerguntas[ArrayPerguntas.length-1]){
+                divPergunta.nextElementSibling.scrollIntoView();
+            }
+        }
+        
+        setTimeout(Scrol1,2000)
     }
 
     else if (elemento.id === 'false') {
         for (let i = 0; i < Imagem.length; i++) {
-
             Imagem[i].children[0].removeAttribute('onclick')
             Imagem[i].children[0].style.opacity = '0.3'
             Imagem[i].children[1].style.color = 'red'
@@ -102,7 +109,16 @@ function VerificarResposta(elemento) {
                 Imagem[i].children[1].style.color = 'green'
             }
         }
+        function Scrol(){
+            if(divPergunta !== ArrayPerguntas[ArrayPerguntas.length-1]){
+                divPergunta.nextElementSibling.scrollIntoView();
+            }
+        }
+        setTimeout(Scrol,2000)
+       
     }
+
+    
 
 
     if (clicks === perguntas.length) {
@@ -118,6 +134,12 @@ function VerificarResposta(elemento) {
                 break
             }
         }
+        function Scrol3(){
+            document.querySelector('.resultado').scrollIntoView();
+        }
+
+        setTimeout(Scrol3,2000)
+        
     }
 }
 
