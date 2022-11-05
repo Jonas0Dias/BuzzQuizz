@@ -3,7 +3,7 @@
 * {
     box-sizing: border-box;
     scroll-behavior: smooth;
-      
+
 }
 
 body {
@@ -155,22 +155,24 @@ section {
 
 
 }
-.CriarTela2 > h1 {
+
+.CriarTela2>h1 {
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
     margin: 50px;
-   
+
 
 }
-h6{
+
+h6 {
     font-family: 'Roboto';
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
     display: flex;
-    margin:15px 0 15px 15px
+    margin: 15px 0 15px 15px
 }
 
 .CriarTela1 {
@@ -246,19 +248,24 @@ h6{
     margin-top: 27px;
 
 }
-.pergunta2 p, .pergunta3 p {
+
+.pergunta2 p,
+.pergunta3 p {
     font-family: 'Roboto';
     font-size: 20px;
     margin-left: 15px;
     font-weight: 700;
 }
-.pergunta2 ion-icon, .pergunta3 ion-icon{
+
+.pergunta2 ion-icon,
+.pergunta3 ion-icon {
     font-size: 26px;
     margin-right: 15px;
     font-weight: 700;
 
 }
-.pergunta3{
+
+.pergunta3 {
     width: 400px;
     height: 74px;
     background-color: #ffffff;
@@ -611,9 +618,11 @@ button:hover {
     flex-direction: column;
     margin-bottom: 24px;
 }
-.nivel title{
+
+.nivel title {
     margin-bottom: 12px;
 }
+
 .nivel input {
     width: 564px;
     height: 46px;
@@ -623,7 +632,8 @@ button:hover {
     margin-top: 9px;
     margin-bottom: 14px;
 }
-.nivel ::placeholder{
+
+.nivel ::placeholder {
     font-style: italic;
     font-weight: 400;
     font-size: 19px;
@@ -663,7 +673,9 @@ button:hover {
         width: 375px;
         max-height: 439px;
     }
-
+    .nivel input {
+        width: 341px;
+    }
     .botaoCriarPerguntas {
         width: 324px;
         height: 54px;
@@ -680,30 +692,31 @@ button:hover {
         width: 100%;
     }
 
-    .resultado{
+    .resultado {
         width: 100%;
     }
 
-    .imagem{
+    .imagem {
         width: 48%;
     }
 
-    .ImagemFim{
+    .ImagemFim {
         flex-direction: column;
         text-align: center;
         align-items: center;
     }
 
-    .ImagemFim img{
+    .ImagemFim img {
         width: 100%;
         margin-right: 0px;
     }
 
-    .ImagemFim p{
+    .ImagemFim p {
         margin-top: 10px;
     }
-    .quiz{
+
+    .quiz {
         width: 100%;
         height: auto;
     }
-    }
+}

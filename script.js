@@ -161,7 +161,7 @@ function irParaTelaDeCriarNiveis() { //-----TELA2-------//
     tela3.classList.remove('sumir');
 }
 
-function tela4() {
+function irtela4() {
     const tela3 = document.querySelector('.tela3');
     tela3.classList.add('escondido');
     const tela4 = document.querySelector(".tela4");
@@ -170,15 +170,16 @@ function tela4() {
 }
 
 function addobjetos() {
-
+    console.log("adicionar info array");
 }
 
 function pagquizz() {
-    const tela2 = document.querySelector('.CriarTela2');
+    console.log ("mandar para a página do quizz criado");
+   /* const tela2 = document.querySelector('.CriarTela2');
     const tela4 = document.querySelector(".tela4");
     tela4.classList.add('sumir');
     tela2.classList.remove('escondido');
-    console.log('tela 2');
+    console.log('tela 2');*/
 }
 function home() {
     console.log('voltar tela 1 - home');
