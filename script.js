@@ -193,6 +193,7 @@ function irtela4() {
 
 function addobjetos() {
     console.log("adicionar info array");
+    
 }
 
 function pagquizz() {
