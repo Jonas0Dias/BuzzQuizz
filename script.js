@@ -6,8 +6,8 @@ let Resposta;
 let Imagem;
 let pontos = 0;
 let clicks = 0;
-let nivel;
-let Niveis = [];
+let nivel = 0;
+let niveis = {};
 let novoquizz = {};
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
@@ -74,7 +74,7 @@ function MostrarQuizz(elemento) {
 function VerificarResposta(elemento) {
     clicks += 1
     ArrayPerguntas = document.querySelectorAll('.perguntas')
-    
+
     // console.log(elemento.parentNode.parentNode.parentNode.parentNode.children)
     Imagem = elemento.parentNode.parentNode.children
     divPergunta = Imagem[0].parentNode.parentNode
@@ -85,17 +85,17 @@ function VerificarResposta(elemento) {
             Imagem[i].children[0].removeAttribute('onclick')
             Imagem[i].children[0].style.opacity = '0.3'
             Imagem[i].children[1].style.color = 'red'
-            console.log(divPergunta===ArrayPerguntas[i])
+            console.log(divPergunta === ArrayPerguntas[i])
         }
         elemento.parentNode.children[1].style.color = 'green'
         elemento.style.opacity = '1'
-        function Scrol1(){
-            if(divPergunta !== ArrayPerguntas[ArrayPerguntas.length-1]){
+        function Scrol1() {
+            if (divPergunta !== ArrayPerguntas[ArrayPerguntas.length - 1]) {
                 divPergunta.nextElementSibling.scrollIntoView();
             }
         }
-        
-        setTimeout(Scrol1,2000)
+
+        setTimeout(Scrol1, 2000)
     }
 
     else if (elemento.id === 'false') {
@@ -109,16 +109,16 @@ function VerificarResposta(elemento) {
                 Imagem[i].children[1].style.color = 'green'
             }
         }
-        function Scrol(){
-            if(divPergunta !== ArrayPerguntas[ArrayPerguntas.length-1]){
+        function Scrol() {
+            if (divPergunta !== ArrayPerguntas[ArrayPerguntas.length - 1]) {
                 divPergunta.nextElementSibling.scrollIntoView();
             }
         }
-        setTimeout(Scrol,2000)
-       
+        setTimeout(Scrol, 2000)
+
     }
 
-    
+
 
 
     if (clicks === perguntas.length) {
@@ -134,12 +134,12 @@ function VerificarResposta(elemento) {
                 break
             }
         }
-        function Scrol3(){
+        function Scrol3() {
             document.querySelector('.resultado').scrollIntoView();
         }
 
-        setTimeout(Scrol3,2000)
-        
+        setTimeout(Scrol3, 2000)
+
     }
 }
 
@@ -191,18 +191,51 @@ function irtela4() {
     tela4.classList.remove('sumir');
 }
 
-function addobjetos() {
+function addobjetos() { //---adicionar niveis do quizz ---//
     console.log("adicionar info array");
-    
+
+  /*  if (nivel == 0) {
+        const x = document.querySelector(".titulonivel").value;
+        let y = Number(document.querySelector(".per").value);
+        const z = document.querySelector(".url").value;
+        const w = document.querySelector(".descricao").value;
+        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
+        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
+        novoquizz[nivel] += { image: `${z},` };
+        novoquizz[nivel] += { text: `${w}` };
+    }
+    else if (nivel == 1) {
+        const x = document.querySelector(".titulonivel").value;
+        let y = Number(document.querySelector(".per").value);
+        const z = document.querySelector(".url").value;
+        const w = document.querySelector(".descricao").value;
+        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
+        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
+        novoquizz[nivel] += { image: `${z},` };
+        novoquizz[nivel] += { text: `${w}` };
+    }
+    else if (nivel == 2) {
+        const x = document.querySelector(".titulonivel").value;
+        let y = Number(document.querySelector(".per").value);
+        const z = document.querySelector(".url").value;
+        const w = document.querySelector(".descricao").value;
+        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
+        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
+        novoquizz[nivel] += { image: `${z},` };
+        novoquizz[nivel] += { text: `${w}` };
+    }
+    console.log(novoquizz[nivel]);
+    console.log(document.querySelector(".titulonivel").value);
+*/
 }
 
 function pagquizz() {
-    console.log ("mandar para a página do quizz criado");
-   /* const tela2 = document.querySelector('.CriarTela2');
-    const tela4 = document.querySelector(".tela4");
-    tela4.classList.add('sumir');
-    tela2.classList.remove('escondido');
-    console.log('tela 2');*/
+    console.log("mandar para a página do quizz criado");
+    /* const tela2 = document.querySelector('.CriarTela2');
+     const tela4 = document.querySelector(".tela4");
+     tela4.classList.add('sumir');
+     tela2.classList.remove('escondido');
+     console.log('tela 2');*/
 }
 function home() {
     console.log('voltar tela 1 - home');
@@ -215,4 +248,24 @@ function criarquizz() {
     CriarQuizz.classList.remove('escondido')
     promisse = ObterQuizzes;
     promisse.then(console.log('quizzes carregados'));
+}
+function newlevel2() {
+    nivel++;
+    const level = document.querySelector(".n2");
+    level.innerHTML += `<input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
+        placeholder="Título do nível" />
+    <input class="per" type="number" min="0" max="100" placeholder="% de acerto mínima" />
+    <input class="url" type="url" placeholder="URL da imagem do nível" />
+    <input data-ls-module="charCounter" class="descricao" type="text" minlength="30"
+        placeholder="Descrição do nível">`;
+}
+function newlevel3() {
+    nivel++;
+    const level = document.querySelector(".n3");
+    level.innerHTML += `<input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
+        placeholder="Título do nível" />
+    <input class="per" type="number" min="0" max="100" placeholder="% de acerto mínima" />
+    <input class="url" type="url" placeholder="URL da imagem do nível" />
+    <input data-ls-module="charCounter" class="descricao" type="text" minlength="30"
+        placeholder="Descrição do nível">`;
 }
