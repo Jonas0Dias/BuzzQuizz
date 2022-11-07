@@ -7,6 +7,7 @@ let Imagem;
 let pontos = 0;
 let clicks = 0;
 let contnivel = 0;
+let nivel = 0;
 let niveis = [{ title: '', image: '', text: '', minValue: '' }, { title: '', image: '', text: '', minValue: '' }, { title: '', image: '', text: '', minValue: '' }]
 let novoquizz = {};
 let quizz = [];
@@ -235,11 +236,12 @@ function addobjetos() { //---adicionar niveis do quizz ---//
 
 function pagquizz() {
     console.log("mandar para a página do quizz criado");
-    /* const tela2 = document.querySelector('.CriarTela2');
-     const tela4 = document.querySelector(".tela4");
-     tela4.classList.add('sumir');
-     tela2.classList.remove('escondido');
-     console.log('tela 2');*/
+    // const tela2 = document.querySelector('.CriarTela2');
+    const tela4 = document.querySelector(".tela4");
+    tela4.classList.add('sumir');
+    // tela2.classList.remove('escondido');
+    addobjetos();
+
 }
 function home() {
     console.log('voltar tela 1 - home');
@@ -472,7 +474,7 @@ function enviarQuizz() {
     novoquizz = {
         title: objetoQuizz.title,
         image: objetoQuizz.image,
-        //-----inserir array das perguntas---//
+        //Adicionar objeto de perguntas//
         levels: [
             {
                 title: niveis[0].title,
@@ -508,6 +510,16 @@ function postnewquizz() {
     localStorage.setItem("MeuQuizz", meuquizzserializado);
     //----FIM GUARDANDO LOCALMENTE-----//
 
+<<<<<<< HEAD
     const envio = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
 
 }
+=======
+    const envio = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz);
+    envio.then(teste) //---enviando novo quizz----///
+    console.log('teste')
+}
+ function teste(elemento){
+    console.log(elemento)
+ }
+>>>>>>> e2176d36c8d918e8629b88c76c55b4b1441191cc
