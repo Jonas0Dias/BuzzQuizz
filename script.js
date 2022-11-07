@@ -7,6 +7,7 @@ let Imagem;
 let pontos = 0;
 let clicks = 0;
 let contnivel = 0;
+let nivel=0;
 let niveis = [{ title: '', image: '', text: '', minValue: '' }, { title: '', image: '', text: '', minValue: '' }, { title: '', image: '', text: '', minValue: '' }]
 let novoquizz = {};
 let quizz = [];
@@ -347,6 +348,6 @@ function postnewquizz(){
     console.log("inicio envio novo quizz");   
     
     const envio = axios.post ('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
-    envio.then(console.log(envio));
+    envio.then(resposta);
 
 }
