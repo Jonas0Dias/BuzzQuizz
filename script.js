@@ -177,6 +177,8 @@ function comecarQuizz() { //-----TELA1-------//
     esconderh1.classList.add('escondido');
     tela1.classList.add('escondido');
     tela2.classList.remove('escondido');
+
+    escreverPerguntas();
 }
 
 function irParaTelaDeCriarNiveis() { //-----TELA2-------//
@@ -279,7 +281,7 @@ function newlevel3() {
 let tituloQuizz;
 let urlImgQuizz;
 let perguntasPreenchidas = 0;
-let QtdPperguntas;
+let QtdPerguntas;
 const todasAsPerguntas = [];
 
 
@@ -301,39 +303,65 @@ function validarURL(string) {
 function irParaTelaDeCriarPerguntas() {
     const tituloQuizz = document.querySelector('.titulo-quizz').value;
     const URLimg = document.querySelector('.urlImgQuizz').value;
-    const QtdPperguntas = parseInt(document.querySelector('.qtdDePreguntas').value);
+    QtdPerguntas = parseInt(document.querySelector('.qtdDePreguntas').value);
     const qtdNiveis = parseInt(document.querySelector('.qtdDeNiveis').value);
 
     objetoQuizz = {
         title: tituloQuizz,
         image: URLimg,
-        questions: QtdPperguntas,
+        questions: QtdPerguntas,
         levels: qtdNiveis
     }
     console.log(objetoQuizz);
 
 
-    if (tituloQuizz.length > 20 && tituloQuizz.length <= 65 && validarURL(URLimg) && QtdPperguntas >= 3 && qtdNiveis >= 2) {
+    if (tituloQuizz.length > 20 && tituloQuizz.length <= 65 && validarURL(URLimg) && QtdPerguntas >= 3 && qtdNiveis >= 2) {
         comecarQuizz();
     } else {
         alert('Dados inseridos incorretamente')
     }
+
+
 }
 function escreverPerguntas() {
 
+    const caixaPerguntas = document.querySelector('.outras-perguntas');
+    // console.log('chamando escreverPerguntas', caixaPerguntas, QtdPerguntas);
 
-    const caixaPerguntas = document.querySelector('.perguntas-iniciais');
-
-    for (let i = 0; i < QtdPperguntas; i++) {
+    for (let i = 2; i <= QtdPerguntas; i++) {
         caixaPerguntas.innerHTML +=
             `
-             <div class="pergunta2">
-                <p>Pergunta </p>
-                <ion-icon name="create-outline" onclick="maisPerguntas(this)"></ion-icon>
+             <div class="maisPerguntas" onclick="removerEscondidoPergunta(this)">
+                <p>Pergunta ${i} </p>
+                <ion-icon name="create-outline"></ion-icon>
+                <div class="escondido"> 
+                    <h6>Pergunta ${i}</h6>
+                    <input type=" text" placeholder="Texto da pergunta" />
+                    <input type="text" placeholder="Cor de fundo da pergunta" />
+                    <h6>Resposta correta</h6>
+                    <input type="text" placeholder="Resposta correta" />
+                    <input type="text" placeholder="URL da imagem" />
+                    <h6>Respostas incorretas</h6>
+                    <input type="text" placeholder="Resposta incorreta 1" />
+                    <input type="text" placeholder="URL da imagem 1" />
+                    <input type="text" placeholder="Resposta incorreta 2" />
+                    <input type="text" placeholder="URL da imagem 2" />
+                    <input type="text" placeholder="Resposta incorreta 3" />
+                    <input type="text" placeholder="URL da imagem 3" />
+                </div>
             </div>
             `
     }
 }
+function removerEscondidoPergunta(elementoHtmlPergunta) {
+    const elementoEscondido = elementoHtmlPergunta.querySelector('.escondido');
+    if (elementoEscondido != null) {
+
+        elementoEscondido.classList.remove('escondido');
+    }
+
+}
+
 
 
 
