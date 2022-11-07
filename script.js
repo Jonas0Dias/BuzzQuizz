@@ -7,9 +7,9 @@ let Imagem;
 let pontos = 0;
 let clicks = 0;
 let nivel = 0;
-let niveis = {};
-TituloNivel1 = document.querySelector('.titulonivel').value
-let novoquizz = {title:'',image:'',questions:[{title:'',color:'',answers:[]},{title:'',color:'',answers:[]},{title:'',color:'',answers:[]}], levels:[{title:'' ,image:'', text:'',minValue:''},{title:'',image:'', text:'',minValue:''},{title:'',image:'', text:'',minValue:''}]};
+let niveis = [];
+let novoquizz = {};
+let quizz = [];
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
 ObterQuizzes.then(InserirQuizzes)
@@ -169,7 +169,8 @@ function reinicar() {
 //-------FIM JS JONAS------//
 
 
-function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
+
+function comecarQuizz() { //-----TELA1-------//
     const tela1 = document.querySelector('.CriarTela1');
     const tela2 = document.querySelector('.CriarTela2');
     const esconderh1 = document.querySelector('.CriarQuizz h1');
@@ -182,6 +183,7 @@ function irParaTelaDeCriarNiveis() { //-----TELA2-------//
     const tela2 = document.querySelector('.CriarTela2');
     const tela3 = document.querySelector('.tela3'); tela2.classList.add('escondido');
     tela3.classList.remove('sumir');
+
 }
 
 function irtela4() {
@@ -196,14 +198,15 @@ function addobjetos() { //---adicionar niveis do quizz ---//
     console.log("adicionar info array");
 
     if (nivel == 0) {
-        const x = document.querySelector(".titulonivel").value;
-        let y = Number(document.querySelector(".per").value);
-        const z = document.querySelector(".url").value;
-        const w = document.querySelector(".descricao").value;
-        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
-        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
-        novoquizz[nivel] += { image: `${z},` };
-        novoquizz[nivel] += { text: `${w}` };
+        novoquizz[nivel] = novoquizz[nivel] + { title: `${document.querySelector(".titulonivel").value}` };
+        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${Number(document.querySelector(".per").value)}` };
+        novoquizz[nivel] += { image: `${document.querySelector(".url").value}` };
+        novoquizz[nivel] += { text: `${document.querySelector(".descricao").value}` };
+
+        novoquizz[nivel]=novoquizz[nivel] + (`{title:${document.querySelector(".titulonivel").value}}`);
+        novoquizz=novoquizz.push({ minValue: `${Number(document.querySelector(".per").value)}` });
+
+        console.log(novoquizz);
     }
     else if (nivel == 1) {
         const x = document.querySelector(".titulonivel").value;
@@ -225,7 +228,7 @@ function addobjetos() { //---adicionar niveis do quizz ---//
         novoquizz[nivel] += { image: `${z},` };
         novoquizz[nivel] += { text: `${w}` };
     }
-    console.log(novoquizz[nivel]);
+    console.log(novoquizz);
     console.log(document.querySelector(".titulonivel").value);
 
 }
@@ -253,7 +256,8 @@ function criarquizz() {
 function newlevel2() {
     nivel++;
     const level = document.querySelector(".n2");
-    level.innerHTML += `<input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
+    level.innerHTML = '';
+    level.innerHTML += `<title>Nível 2</title><input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
         placeholder="Título do nível" />
     <input class="per" type="number" min="0" max="100" placeholder="% de acerto mínima" />
     <input class="url" type="url" placeholder="URL da imagem do nível" />
@@ -263,10 +267,48 @@ function newlevel2() {
 function newlevel3() {
     nivel++;
     const level = document.querySelector(".n3");
-    level.innerHTML += `<input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
+    level.innerHTML = '';
+    level.innerHTML += `<title>Nível 3</title><input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
         placeholder="Título do nível" />
     <input class="per" type="number" min="0" max="100" placeholder="% de acerto mínima" />
     <input class="url" type="url" placeholder="URL da imagem do nível" />
     <input data-ls-module="charCounter" class="descricao" type="text" minlength="30"
         placeholder="Descrição do nível">`;
+}
+// inicio ana
+let objetoQuizz = {
+    title: '',
+    image: '',
+    questions: [],
+    levels: []
+}
+function validarURL(string) {
+    try {
+        let url = new URL(string);
+        return true;
+    } catch (err) {
+
+    }
+}
+
+function irParaTelaDeCriarPerguntas() {
+    const tituloQuizz = document.querySelector('.titulo-quizz').value;
+    const URLimg = document.querySelector('.urlImgQuizz').value;
+    const QtdPperguntas = parseInt(document.querySelector('.qtdDePreguntas').value);
+    const qtdNiveis = parseInt(document.querySelector('.qtdDeNiveis').value);
+
+    objetoQuizz = {
+        title: tituloQuizz,
+        image: URLimg,
+        questions: QtdPperguntas,
+        levels: qtdNiveis
+    }
+    console.log(objetoQuizz);
+
+
+    if (tituloQuizz.length > 20 && tituloQuizz.length <= 65 && validarURL(URLimg) && QtdPperguntas >= 3 && qtdNiveis >= 2) {
+        comecarQuizz();
+    } else {
+        alert('Dados inseridos incorretamente')
+    }
 }

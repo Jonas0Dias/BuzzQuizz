@@ -28,10 +28,11 @@
     <main class="CriarQuizz escondido">
         <h1>Comece pelo começo</h1>
         <div class='CriarTela1'>
-            <input type=" text" placeholder="Título do seu quizz" />
-            <input type="text" placeholder="URL da imagem do seu quizz" />
-            <input type="text" placeholder="Quantidade de perguntas do quizz" />
-            <input type="text" placeholder="Quantidade de níveis do quizz" />
+            <input type=" text" placeholder="Título do seu quizz" class="titulo-quizz" value="" minlength="20"
+                maxlength="65" />
+            <input type="text" placeholder="URL da imagem do seu quizz" class="urlImgQuizz" value="" />
+            <input type="text" placeholder="Quantidade de perguntas do quizz" class="qtdDePreguntas" value="" />
+            <input type="text" placeholder="Quantidade de níveis do quizz" class="qtdDeNiveis" />
 
             <button onclick="irParaTelaDeCriarPerguntas()" class="botaoCriarPerguntas">Prosseguir para criar
                 perguntas</button>
