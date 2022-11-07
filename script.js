@@ -7,7 +7,7 @@ let Imagem;
 let pontos = 0;
 let clicks = 0;
 let nivel = 0;
-let niveis = {};
+let niveis = [];
 let novoquizz = {};
 let quizz = [];
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
@@ -197,39 +197,40 @@ function irtela4() {
 function addobjetos() { //---adicionar niveis do quizz ---//
     console.log("adicionar info array");
 
-    /*  if (nivel == 0) {
-          const x = document.querySelector(".titulonivel").value;
-          let y = Number(document.querySelector(".per").value);
-          const z = document.querySelector(".url").value;
-          const w = document.querySelector(".descricao").value;
-          novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
-          novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
-          novoquizz[nivel] += { image: `${z},` };
-          novoquizz[nivel] += { text: `${w}` };
-      }
-      else if (nivel == 1) {
-          const x = document.querySelector(".titulonivel").value;
-          let y = Number(document.querySelector(".per").value);
-          const z = document.querySelector(".url").value;
-          const w = document.querySelector(".descricao").value;
-          novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
-          novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
-          novoquizz[nivel] += { image: `${z},` };
-          novoquizz[nivel] += { text: `${w}` };
-      }
-      else if (nivel == 2) {
-          const x = document.querySelector(".titulonivel").value;
-          let y = Number(document.querySelector(".per").value);
-          const z = document.querySelector(".url").value;
-          const w = document.querySelector(".descricao").value;
-          novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
-          novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
-          novoquizz[nivel] += { image: `${z},` };
-          novoquizz[nivel] += { text: `${w}` };
-      }
-      console.log(novoquizz[nivel]);
-      console.log(document.querySelector(".titulonivel").value);
-  */
+    if (nivel == 0) {
+        novoquizz[nivel] = novoquizz[nivel] + { title: `${document.querySelector(".titulonivel").value}` };
+        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${Number(document.querySelector(".per").value)}` };
+        novoquizz[nivel] += { image: `${document.querySelector(".url").value}` };
+        novoquizz[nivel] += { text: `${document.querySelector(".descricao").value}` };
+
+        novoquizz[nivel]=novoquizz[nivel] + (`{title:${document.querySelector(".titulonivel").value}}`);
+        novoquizz=novoquizz.push({ minValue: `${Number(document.querySelector(".per").value)}` });
+
+        console.log(novoquizz);
+    }
+    else if (nivel == 1) {
+        const x = document.querySelector(".titulonivel").value;
+        let y = Number(document.querySelector(".per").value);
+        const z = document.querySelector(".url").value;
+        const w = document.querySelector(".descricao").value;
+        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
+        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
+        novoquizz[nivel] += { image: `${z},` };
+        novoquizz[nivel] += { text: `${w}` };
+    }
+    else if (nivel == 2) {
+        const x = document.querySelector(".titulonivel").value;
+        let y = Number(document.querySelector(".per").value);
+        const z = document.querySelector(".url").value;
+        const w = document.querySelector(".descricao").value;
+        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
+        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
+        novoquizz[nivel] += { image: `${z},` };
+        novoquizz[nivel] += { text: `${w}` };
+    }
+    console.log(novoquizz);
+    console.log(document.querySelector(".titulonivel").value);
+
 }
 
 function pagquizz() {
@@ -255,7 +256,8 @@ function criarquizz() {
 function newlevel2() {
     nivel++;
     const level = document.querySelector(".n2");
-    level.innerHTML += `<input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
+    level.innerHTML = '';
+    level.innerHTML += `<title>Nível 2</title><input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
         placeholder="Título do nível" />
     <input class="per" type="number" min="0" max="100" placeholder="% de acerto mínima" />
     <input class="url" type="url" placeholder="URL da imagem do nível" />
@@ -265,7 +267,8 @@ function newlevel2() {
 function newlevel3() {
     nivel++;
     const level = document.querySelector(".n3");
-    level.innerHTML += `<input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
+    level.innerHTML = '';
+    level.innerHTML += `<title>Nível 3</title><input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
         placeholder="Título do nível" />
     <input class="per" type="number" min="0" max="100" placeholder="% de acerto mínima" />
     <input class="url" type="url" placeholder="URL da imagem do nível" />
