@@ -8,7 +8,8 @@ let pontos = 0;
 let clicks = 0;
 let nivel = 0;
 let niveis = {};
-let novoquizz = {};
+TituloNivel1 = document.querySelector('.titulonivel').value
+let novoquizz = {title:'',image:'',questions:[{title:'',color:'',answers:[]},{title:'',color:'',answers:[]},{title:'',color:'',answers:[]}], levels:[{title:'' ,image:'', text:'',minValue:''},{title:'',image:'', text:'',minValue:''},{title:'',image:'', text:'',minValue:''}]};
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
 ObterQuizzes.then(InserirQuizzes)
@@ -194,7 +195,7 @@ function irtela4() {
 function addobjetos() { //---adicionar niveis do quizz ---//
     console.log("adicionar info array");
 
-  /*  if (nivel == 0) {
+    if (nivel == 0) {
         const x = document.querySelector(".titulonivel").value;
         let y = Number(document.querySelector(".per").value);
         const z = document.querySelector(".url").value;
@@ -226,7 +227,7 @@ function addobjetos() { //---adicionar niveis do quizz ---//
     }
     console.log(novoquizz[nivel]);
     console.log(document.querySelector(".titulonivel").value);
-*/
+
 }
 
 function pagquizz() {
