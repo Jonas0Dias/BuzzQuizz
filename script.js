@@ -398,10 +398,14 @@ function enviarQuizz() {
     resposta.then(postnewquizz());
 }
 
-function postnewquizz() {
-    console.log("inicio envio novo quizz");
+function postnewquizz(){
+    console.log("inicio envio novo quizz");   
 
-    const envio = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
-    envio.then(console.log(envio));
-
+    //----GUARDANDO LOCALMENTE-----//
+    const meuquizzserializado = JSON.stringify(novoquizz)
+    localStorage.setItem("MeuQuizz", meuquizzserializado);
+    //----FIM GUARDANDO LOCALMENTE-----//
+    
+    const envio = axios.post ('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
+    
 }
