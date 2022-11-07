@@ -9,12 +9,14 @@ let clicks = 0;
 let nivel;
 let Niveis = [];
 let novoquizz = {};
+let quizz = [];
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
 TodosOsQuizzes = document.querySelector('section')
 ObterQuizzes.then(InserirQuizzes)
 BotaoCriar = document.querySelector(".ListaQuizzes")
 CriarQuizz = document.querySelector('.CriarQuizz')
 CapaTitulo = document.querySelector('.PaginaDeUmQuizz')
+
 
 function InserirQuizzes(resposta) {
     console.log(resposta.data)
@@ -146,7 +148,8 @@ function reinicar() {
 //-------FIM JS JONAS------//
 
 
-function irParaTelaDeCriarPerguntas() { //-----TELA1-------//
+
+function comecarQuizz() { //-----TELA1-------//
     const tela1 = document.querySelector('.CriarTela1');
     const tela2 = document.querySelector('.CriarTela2');
     const esconderh1 = document.querySelector('.CriarQuizz h1');
@@ -159,6 +162,7 @@ function irParaTelaDeCriarNiveis() { //-----TELA2-------//
     const tela2 = document.querySelector('.CriarTela2');
     const tela3 = document.querySelector('.tela3'); tela2.classList.add('escondido');
     tela3.classList.remove('sumir');
+
 }
 
 function tela4() {
@@ -192,3 +196,44 @@ function criarquizz() {
     promisse = ObterQuizzes;
     promisse.then(console.log('quizzes carregados'));
 }
+
+
+
+// inicio ana
+let objetoQuizz = {
+    title: '',
+    image: '',
+    questions: [],
+    levels: []
+}
+function validarURL(string) {
+    try {
+        let url = new URL(string);
+        return true;
+    } catch (err) {
+
+    }
+}
+
+function irParaTelaDeCriarPerguntas() {
+    const tituloQuizz = document.querySelector('.titulo-quizz').value;
+    const URLimg = document.querySelector('.urlImgQuizz').value;
+    const QtdPperguntas = parseInt(document.querySelector('.qtdDePreguntas').value);
+    const qtdNiveis = parseInt(document.querySelector('.qtdDeNiveis').value);
+
+    objetoQuizz = {
+        title: tituloQuizz,
+        image: URLimg,
+        questions: QtdPperguntas,
+        levels: qtdNiveis
+    }
+    console.log(objetoQuizz);
+
+
+    if (tituloQuizz.length > 20 && tituloQuizz.length <= 65 && validarURL(URLimg) && QtdPperguntas >= 3 && qtdNiveis >= 2) {
+        comecarQuizz();
+    } else {
+        alert('Dados inseridos incorretamente')
+    }
+}
+
