@@ -272,3 +272,40 @@ function newlevel3() {
     <input data-ls-module="charCounter" class="descricao" type="text" minlength="30"
         placeholder="Descrição do nível">`;
 }
+// inicio ana
+let objetoQuizz = {
+    title: '',
+    image: '',
+    questions: [],
+    levels: []
+}
+function validarURL(string) {
+    try {
+        let url = new URL(string);
+        return true;
+    } catch (err) {
+
+    }
+}
+
+function irParaTelaDeCriarPerguntas() {
+    const tituloQuizz = document.querySelector('.titulo-quizz').value;
+    const URLimg = document.querySelector('.urlImgQuizz').value;
+    const QtdPperguntas = parseInt(document.querySelector('.qtdDePreguntas').value);
+    const qtdNiveis = parseInt(document.querySelector('.qtdDeNiveis').value);
+
+    objetoQuizz = {
+        title: tituloQuizz,
+        image: URLimg,
+        questions: QtdPperguntas,
+        levels: qtdNiveis
+    }
+    console.log(objetoQuizz);
+
+
+    if (tituloQuizz.length > 20 && tituloQuizz.length <= 65 && validarURL(URLimg) && QtdPperguntas >= 3 && qtdNiveis >= 2) {
+        comecarQuizz();
+    } else {
+        alert('Dados inseridos incorretamente')
+    }
+}
