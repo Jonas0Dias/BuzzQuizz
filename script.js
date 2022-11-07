@@ -6,8 +6,8 @@ let Resposta;
 let Imagem;
 let pontos = 0;
 let clicks = 0;
-let nivel = 0;
-let niveis = [];
+let contnivel = 0;
+let niveis = [{ title: '', image: '', text: '', minValue: '' }, { title: '', image: '', text: '', minValue: '' }, { title: '', image: '', text: '', minValue: '' }]
 let novoquizz = {};
 let quizz = [];
 const ObterQuizzes = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes')
@@ -183,7 +183,6 @@ function irParaTelaDeCriarNiveis() { //-----TELA2-------//
     const tela2 = document.querySelector('.CriarTela2');
     const tela3 = document.querySelector('.tela3'); tela2.classList.add('escondido');
     tela3.classList.remove('sumir');
-
 }
 
 function irtela4() {
@@ -197,40 +196,39 @@ function irtela4() {
 function addobjetos() { //---adicionar niveis do quizz ---//
     console.log("adicionar info array");
 
-    if (nivel == 0) {
-        novoquizz[nivel] = novoquizz[nivel] + { title: `${document.querySelector(".titulonivel").value}` };
-        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${Number(document.querySelector(".per").value)}` };
-        novoquizz[nivel] += { image: `${document.querySelector(".url").value}` };
-        novoquizz[nivel] += { text: `${document.querySelector(".descricao").value}` };
+    novoquizz = '';
 
-        novoquizz[nivel]=novoquizz[nivel] + (`{title:${document.querySelector(".titulonivel").value}}`);
-        novoquizz=novoquizz.push({ minValue: `${Number(document.querySelector(".per").value)}` });
+    const titulonivel = document.querySelector(".titulonivel").value;
+    let minValue = Number(document.querySelector(".per").value);
+    const urlnivel = document.querySelector(".url").value;
+    const textnivel = document.querySelector(".descricao").value;
 
-        console.log(novoquizz);
-    }
-    else if (nivel == 1) {
-        const x = document.querySelector(".titulonivel").value;
-        let y = Number(document.querySelector(".per").value);
-        const z = document.querySelector(".url").value;
-        const w = document.querySelector(".descricao").value;
-        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
-        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
-        novoquizz[nivel] += { image: `${z},` };
-        novoquizz[nivel] += { text: `${w}` };
-    }
-    else if (nivel == 2) {
-        const x = document.querySelector(".titulonivel").value;
-        let y = Number(document.querySelector(".per").value);
-        const z = document.querySelector(".url").value;
-        const w = document.querySelector(".descricao").value;
-        novoquizz[nivel] = novoquizz[nivel] + { title: `${x},` };
-        novoquizz[nivel] = novoquizz[nivel] + { minValue: `${y},` };
-        novoquizz[nivel] += { image: `${z},` };
-        novoquizz[nivel] += { text: `${w}` };
-    }
-    console.log(novoquizz);
-    console.log(document.querySelector(".titulonivel").value);
+    if (contnivel == 0) {
 
+        niveis[contnivel] = {
+            title: titulonivel,
+            image: urlnivel,
+            text: textnivel,
+            minValue: minValue
+        }
+    }
+    else if (contnivel == 1) {
+        niveis[contnivel] = {
+            title: titulonivel,
+            image: urlnivel,
+            text: textnivel,
+            minValue: minValue
+        }
+    }
+    else if (contnivel == 2) {
+        niveis[contnivel] = {
+            title: titulonivel,
+            image: urlnivel,
+            text: textnivel,
+            minValue: minValue
+        }
+    }
+    enviarQuizz();
 }
 
 function pagquizz() {
@@ -246,15 +244,17 @@ function home() {
     window.location.reload()
 }
 function criarquizz() {
+
     const listaquizzes = document.querySelector('.ListaQuizzes');
     const CriarQuizz = document.querySelector('.CriarQuizz');
     listaquizzes.classList.add('escondido')
     CriarQuizz.classList.remove('escondido')
     promisse = ObterQuizzes;
     promisse.then(console.log('quizzes carregados'));
+
 }
 function newlevel2() {
-    nivel++;
+    contnivel++;
     const level = document.querySelector(".n2");
     level.innerHTML = '';
     level.innerHTML += `<title>Nível 2</title><input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
@@ -265,7 +265,7 @@ function newlevel2() {
         placeholder="Descrição do nível">`;
 }
 function newlevel3() {
-    nivel++;
+    contnivel++;
     const level = document.querySelector(".n3");
     level.innerHTML = '';
     level.innerHTML += `<title>Nível 3</title><input data-ls-module="charCounter" class="titulonivel" type=" text" minlength="10"
@@ -303,12 +303,50 @@ function irParaTelaDeCriarPerguntas() {
         questions: QtdPperguntas,
         levels: qtdNiveis
     }
-    console.log(objetoQuizz);
-
 
     if (tituloQuizz.length > 20 && tituloQuizz.length <= 65 && validarURL(URLimg) && QtdPperguntas >= 3 && qtdNiveis >= 2) {
         comecarQuizz();
     } else {
         alert('Dados inseridos incorretamente')
     }
+}
+
+function enviarQuizz() {
+    novoquizz = {
+        title: objetoQuizz.title,
+        image: objetoQuizz.image,
+       //-----inserir array das perguntas---//
+        levels: [
+            {
+                title: niveis[0].title,
+                image: niveis[0].image,
+                text: niveis[0].text,
+                minValue: niveis[0].minValue
+            },
+            {
+                title: niveis[1].title,
+                image: niveis[1].image,
+                text: niveis[1].text,
+                minValue: niveis[1].minValue
+            },
+            {
+                title: niveis[2].title,
+                image: niveis[2].image,
+                text: niveis[2].text,
+                minValue: niveis[2].minValue
+            }
+        ]
+    }
+    console.log(novoquizz);
+
+    const resposta = axios.get('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes');  //----carregar quizzes---///
+    resposta.then(postnewquizz());
+}
+
+function postnewquizz(){
+    console.log("inicio envio novo quizz");   
+    
+    const envio = axios.post ('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
+    envio.then(console.log(envio));
+
 }
