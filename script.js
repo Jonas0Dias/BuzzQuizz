@@ -510,11 +510,6 @@ function postnewquizz() {
     localStorage.setItem("MeuQuizz", meuquizzserializado);
     //----FIM GUARDANDO LOCALMENTE-----//
 
-<<<<<<< HEAD
-    const envio = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
-
-}
-=======
     const envio = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz);
     envio.then(teste) //---enviando novo quizz----///
     console.log('teste')
@@ -522,4 +517,3 @@ function postnewquizz() {
  function teste(elemento){
     console.log(elemento)
  }
->>>>>>> e2176d36c8d918e8629b88c76c55b4b1441191cc
