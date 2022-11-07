@@ -277,6 +277,13 @@ function newlevel3() {
         placeholder="Descrição do nível">`;
 }
 // inicio ana
+let tituloQuizz;
+let urlImgQuizz;
+let perguntasPreenchidas = 0;
+let QtdPperguntas;
+const todasAsPerguntas = [];
+
+
 let objetoQuizz = {
     title: '',
     image: '',
@@ -304,6 +311,8 @@ function irParaTelaDeCriarPerguntas() {
         questions: QtdPperguntas,
         levels: qtdNiveis
     }
+    console.log(objetoQuizz);
+
 
     if (tituloQuizz.length > 20 && tituloQuizz.length <= 65 && validarURL(URLimg) && QtdPperguntas >= 3 && qtdNiveis >= 2) {
         comecarQuizz();
@@ -311,12 +320,30 @@ function irParaTelaDeCriarPerguntas() {
         alert('Dados inseridos incorretamente')
     }
 }
+function escreverPerguntas() {
+
+
+    const caixaPerguntas = document.querySelector('.perguntas-iniciais');
+
+    for (let i = 0; i < QtdPperguntas; i++) {
+        caixaPerguntas.innerHTML +=
+            `
+             <div class="pergunta2">
+                <p>Pergunta </p>
+                <ion-icon name="create-outline" onclick="maisPerguntas(this)"></ion-icon>
+            </div>
+            `
+    }
+}
+
+
+
 
 function enviarQuizz() {
     novoquizz = {
         title: objetoQuizz.title,
         image: objetoQuizz.image,
-       //-----inserir array das perguntas---//
+        //-----inserir array das perguntas---//
         levels: [
             {
                 title: niveis[0].title,
@@ -346,8 +373,12 @@ function enviarQuizz() {
 
 function postnewquizz(){
     console.log("inicio envio novo quizz");   
+
+    //----GUARDANDO LOCALMENTE-----//
+    const meuquizzserializado = JSON.stringify(novoquizz)
+    localStorage.setItem("MeuQuizz", meuquizzserializado);
+    //----FIM GUARDANDO LOCALMENTE-----//
     
     const envio = axios.post ('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
-    envio.then(resposta);
-
+    
 }
