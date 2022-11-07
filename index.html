@@ -42,27 +42,27 @@
 
         <div class="CriarTela2 escondido">
             <h1>Crie suas perguntas</h1>
-            <div class='perguntas-iniciais'>
+            <div class='perguntas-iniciais' id="pergunta-1">
                 <h6>Pergunta 1</h6>
-                <input type=" text" placeholder="Texto da pergunta" />
-                <input type="text" placeholder="Cor de fundo da pergunta" />
+                <input type=" text" placeholder="Texto da pergunta" id="pergunta-text" />
+                <input type="text" placeholder="Cor de fundo da pergunta" id="cor-fundo" />
                 <h6>Resposta correta</h6>
-                <input type="text" placeholder="Resposta correta" />
-                <input type="text" placeholder="URL da imagem" />
+                <input type="text" placeholder="Resposta correta" id="resposta-correta" />
+                <input type="text" placeholder="URL da imagem" id="url-img" />
                 <h6>Respostas incorretas</h6>
-                <input type="text" placeholder="Resposta incorreta 1" />
-                <input type="text" placeholder="URL da imagem 1" />
-                <input type="text" placeholder="Resposta incorreta 2" />
-                <input type="text" placeholder="URL da imagem 2" />
-                <input type="text" placeholder="Resposta incorreta 3" />
-                <input type="text" placeholder="URL da imagem 3" />
+                <input type="text" placeholder="Resposta incorreta 1" id="res-incorreta1" />
+                <input type="text" placeholder="URL da imagem 1" id="url-img1" />
+                <input type="text" placeholder="Resposta incorreta 2" id="res-incorreta2" />
+                <input type="text" placeholder="URL da imagem 2" id="url-img2" />
+                <input type="text" placeholder="Resposta incorreta 3" id="res-incorreta3" />
+                <input type="text" placeholder="URL da imagem 3" id="url-img3" />
             </div>
             <div class="outras-perguntas">
 
             </div>
 
 
-            <button onclick="irParaTelaDeCriarNiveis()" class="botaoCriarPerguntas">Prosseguir para criar
+            <button onclick="verificarPreechimentoInputs()" class="botaoCriarPerguntas">Prosseguir para criar
                 níveis</button>
         </div>
 

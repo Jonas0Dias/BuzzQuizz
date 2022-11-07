@@ -296,6 +296,7 @@ function validarURL(string) {
         let url = new URL(string);
         return true;
     } catch (err) {
+        return false;
 
     }
 }
@@ -334,20 +335,20 @@ function escreverPerguntas() {
              <div class="maisPerguntas" onclick="removerEscondidoPergunta(this)">
                 <p>Pergunta ${i} </p>
                 <ion-icon name="create-outline"></ion-icon>
-                <div class="escondido"> 
+                <div class="escondido" id="pergunta-${i}"> 
                     <h6>Pergunta ${i}</h6>
-                    <input type=" text" placeholder="Texto da pergunta" />
-                    <input type="text" placeholder="Cor de fundo da pergunta" />
+                    <input type=" text" placeholder="Texto da pergunta" id="pergunta-text" />
+                    <input type="text" placeholder="Cor de fundo da pergunta" id="cor-fundo" />
                     <h6>Resposta correta</h6>
-                    <input type="text" placeholder="Resposta correta" />
-                    <input type="text" placeholder="URL da imagem" />
+                    <input type="text" placeholder="Resposta correta" id="resposta-correta" />
+                    <input type="text" placeholder="URL da imagem" id="url-img" />
                     <h6>Respostas incorretas</h6>
-                    <input type="text" placeholder="Resposta incorreta 1" />
-                    <input type="text" placeholder="URL da imagem 1" />
-                    <input type="text" placeholder="Resposta incorreta 2" />
-                    <input type="text" placeholder="URL da imagem 2" />
-                    <input type="text" placeholder="Resposta incorreta 3" />
-                    <input type="text" placeholder="URL da imagem 3" />
+                    <input type="text" placeholder="Resposta incorreta 1" id="res-incorreta1" />
+                    <input type="text" placeholder="URL da imagem 1" id="url-img1" />
+                    <input type="text" placeholder="Resposta incorreta 2" id="res-incorreta2" />
+                    <input type="text" placeholder="URL da imagem 2" id="url-img2" />
+                    <input type="text" placeholder="Resposta incorreta 3" id="res-incorreta3" />
+                    <input type="text" placeholder="URL da imagem 3" id="url-img3" />
                 </div>
             </div>
             `
@@ -361,6 +362,107 @@ function removerEscondidoPergunta(elementoHtmlPergunta) {
     }
 
 }
+function verificarHexadecimal(cor) {
+    let colorH = cor.replace("#", "");
+    return /^[A-F0-9]+$/i.test(colorH);
+}
+
+function verificarPreechimentoInputs() {
+    const arrayPerguntas = [];
+    // let existeResposta
+
+    for (let j = 1; j <= QtdPerguntas; j++) {
+        const cadaPerguntaInfos = {
+            title: "",
+            color: "",
+            answers: []
+
+
+
+        }
+        const divPergunta = document.querySelector(`#pergunta-${j}`);
+        // arrayPerguntas.push(divPergunta);
+
+        cadaPerguntaInfos.title = divPergunta.querySelector('#pergunta-text').value;
+        cadaPerguntaInfos.color = divPergunta.querySelector('#cor-fundo').value;
+        const textoRespostaCorreta = divPergunta.querySelector('#resposta-correta').value;
+        const imgRespostaCorreta = divPergunta.querySelector('#url-img').value;
+
+        cadaPerguntaInfos.answers.push({
+            text: textoRespostaCorreta,
+            image: imgRespostaCorreta,
+            isCorrectAnswer: true
+        })
+
+        const textoRespostaErrada1 = divPergunta.querySelector('#res-incorreta1').value;
+        const imgRespostaErrada1 = divPergunta.querySelector('#url-img1').value;
+
+        cadaPerguntaInfos.answers.push({
+            text: textoRespostaErrada1,
+            image: imgRespostaErrada1,
+            isCorrectAnswer: false
+        })
+
+        const textoRespostaErrada2 = divPergunta.querySelector('#res-incorreta2').value;
+        const imgRespostaErrada2 = divPergunta.querySelector('#url-img2').value;
+        if (textoRespostaErrada2.length > 0 || imgRespostaErrada2.length > 0) {
+
+            cadaPerguntaInfos.answers.push({
+                text: textoRespostaErrada2,
+                image: imgRespostaErrada2,
+                isCorrectAnswer: false
+            })
+
+        }
+        const textoRespostaErrada3 = divPergunta.querySelector('#res-incorreta3').value;
+        const imgRespostaErrada3 = divPergunta.querySelector('#url-img3').value;
+        if (textoRespostaErrada3.length > 0 || imgRespostaErrada3.length > 0) {
+
+            cadaPerguntaInfos.answers.push({
+                text: textoRespostaErrada3,
+                image: imgRespostaErrada3,
+                isCorrectAnswer: false
+            })
+        }
+        arrayPerguntas.push(cadaPerguntaInfos);
+    }
+
+    console.log(arrayPerguntas)
+
+    for (let k = 0; k < arrayPerguntas.length; k++) {
+        if (arrayPerguntas[k].title.length < 20) {
+            alert('Quantidade insuficiente de caractéres no texto da pergunta' + (k + 1));
+        }
+        if (verificarHexadecimal(arrayPerguntas[k].color) == false || arrayPerguntas[k].color.length != 7 || arrayPerguntas[k].color.indexOf("#") < 0) {
+            alert(`Cor de fundo da pergunta-${k + 1} não está no padrão hexadecimal`)
+        }
+        if (arrayPerguntas[k].answers[0].text.length == 0 || arrayPerguntas[k].answers[1].text.length == 0) {
+            alert(`Na pergunta-${k + 1}. O texto da resposta correta ou da resposta errada não estão preenchidos`);
+        }
+        if (validarURL(arrayPerguntas[k].answers[0].image) == false) {
+            alert(`Na pergunta-${k + 1}. A URL da imagem incorreta`);
+        }
+        if (validarURL(arrayPerguntas[k].answers[1].image) == false) {
+            alert(`Na pergunta-${k + 1}. A URL da imagem incorreta`);
+        }
+        if (arrayPerguntas[k].answers[2] == true) {
+            if (validarURL(arrayPerguntas[k].answers[2].image) == false) {
+                alert(`Na pergunta-${k + 1}. A URL da imagem está incorreta`);
+
+            }
+        }
+        if (arrayPerguntas[k].answers[3] == true) {
+            if (validarURL(arrayPerguntas[k].answers[3].image) == false) {
+                alert(`Na pergunta-${k + 1}. A URL da imagem está incorreta`);
+
+            }
+        }
+
+    }
+
+    // irParaTelaDeCriarNiveis()
+}
+
 
 
 
@@ -398,14 +500,14 @@ function enviarQuizz() {
     resposta.then(postnewquizz());
 }
 
-function postnewquizz(){
-    console.log("inicio envio novo quizz");   
+function postnewquizz() {
+    console.log("inicio envio novo quizz");
 
     //----GUARDANDO LOCALMENTE-----//
     const meuquizzserializado = JSON.stringify(novoquizz)
     localStorage.setItem("MeuQuizz", meuquizzserializado);
     //----FIM GUARDANDO LOCALMENTE-----//
-    
-    const envio = axios.post ('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
-    
+
+    const envio = axios.post('https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes', novoquizz); //---enviando novo quizz----///
+
 }
